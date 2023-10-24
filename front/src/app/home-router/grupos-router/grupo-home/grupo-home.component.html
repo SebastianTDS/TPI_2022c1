@@ -1,0 +1,242 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="" id="black-screen">
+</div>
+
+<div class="mt-2 mt-xxl-0 mt-xl-0 mt-md-2 mt-sm-2 container-xl p-4 border border-2 h-100 rounded-container">
+    <div class="nombreGrupo mb-4">
+        <h1>{{grupo.name}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Detalles del grupo</div>
+                <div class="card-body">
+
+                    <!-- Form Group (username)-->
+                    <div *ngIf="!isAdmin" class="my-1">
+                        <hr>
+                        <b> {{grupo.description}}</b>
+                        <hr>
+                    </div>
+                    <div *ngIf="grupo.subject" class="my-1">
+                        Materia: <b>{{grupo.subject}}</b>
+                        <hr>
+                    </div>
+                    <div *ngIf="isAdmin">
+                        <form [formGroup]="validarForm">
+                            <div *ngIf="isAdmin" class="mb-3">
+                                <label class="small mb-1" for="formNombreGrupo">Nombre del grupo (se visualizará en
+                                    diferentes
+                                    paginas)</label>
+                                <input formControlName="name" id="formNombreGrupo" name="formNombreGrupo"
+                                    class="form-control" placeholder="Ingresa el nombre del grupo"
+                                    value="{{validarForm.name}}">
+                            </div>
+                            <div *ngIf="validarForm.get('name').touched" class="text-danger">
+                                <div *ngIf="validarForm.get('name').hasError('required')">
+                                    Es necesario ingresar el nombre
+                                </div>
+                                <div
+                                    *ngIf="validarForm.get('name').hasError('minlength') || validarForm.get('name').hasError('maxlength')">
+                                    El nombre tiene que tener entre 5 y 40 caracteres
+                                </div>
+                            </div>
+                            <!-- Form Row-->
+                            <div *ngIf="isAdmin" class="row gx-3 mb-3">
+                                <!-- Form Group (first name)-->
+                                <div class="col-md-12">
+                                    <label class="small mb-1" for="formDescripcionGrupo">Descripción del grupo
+                                        :</label>
+                                    <input formControlName="description" id="formDescripcionGrupo"
+                                        name="formDescripcionGrupo" class="form-control"
+                                        placeholder="Escriba una descripción" value="{{validarForm.description}}">
+                                </div>
+                                <!-- Form Group (last name)-->
+                            </div>
+                            <div *ngIf="validarForm.get('description').touched" class="text-danger">
+                                <div *ngIf="validarForm.get('description').hasError('required')">
+                                    Es necesario ingresar una descripción
+                                </div>
+                                <div
+                                    *ngIf="validarForm.get('description').hasError('minlength') || validarForm.get('description').hasError('maxlength')">
+                                    La descripción tiene que tener entre 10 y 80 caracteres
+                                </div>
+                            </div>
+                            <div *ngIf="isAdmin" class="row gx-3 mb-3">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="formMaxEstudiantes">Cantidad máxima alumnos</label>
+                                        <input formControlName="maxStudents" id="formMaxEstudiantes"
+                                            name="formMaxEstudiantes" class="form-control"
+                                            value="{{validarForm.maxStudents}}" placeholder="Ingrese cantidad máxima *"
+                                            required="required">
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="validarForm.get('maxStudents').touched" class="text-danger">
+                                <div *ngIf="validarForm.get('maxStudents').hasError('required')">
+                                    La cantidad máxima de estudiantes no puede ser nula
+                                </div>
+                                <div
+                                    *ngIf="validarForm.get('maxStudents').hasError('min') || validarForm.get('maxStudents').hasError('max')">
+                                    La cantidad máxima de estudiantes tiene que ser mayor a 2 y menor a 9
+                                </div>
+                            </div>
+
+                        </form>
+                        <div *ngIf="isAdmin">
+
+                            <div *ngIf="!grupo.closed">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="radioPrivacy1" type="radio" name="radioPrivacy"
+                                        checked="" (click)="grouoClose(false)" value="{{formClosed }}">
+                                    <label class="form-check-label" for="radioPrivacy1">Público (Podrá ingresar
+                                        cualquier
+                                        usuario al grupo)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="radioPrivacy2" type="radio" name="radioPrivacy"
+                                        (click)="grouoClose(true)" value="{{formClosed }}">
+                                    <label class="form-check-label" for="radioPrivacy2">Privado (Se enviará una
+                                        solicitud
+                                        para
+                                        ingresar al grupo)</label>
+                                </div>
+                            </div>
+                            <div *ngIf="grupo.closed">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="radioPrivacy3" type="radio" name="radioPrivacy"
+                                        (click)="grouoClose(false)" value="{{formClosed }}">
+                                    <label class="form-check-label" for="radioPrivacy1">Público (Podrá ingresar
+                                        cualquier
+                                        usuario al grupo)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="radioPrivacy4" type="radio" name="radioPrivacy"
+                                        (click)="grouoClose(true)" checked="" value="{{formClosed }}">
+                                    <label class="form-check-label" for="radioPrivacy2">Privado (Se enviará una
+                                        solicitud
+                                        para
+                                        ingresar al grupo)</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row mt-4 mb-2 justify-content-end px-3">
+                            <button *ngIf="isAdmin" (click)="modificarGrupo(grupo.id)" class="col-0 col-xxl-2 col-xl-2 col-md-2 col-sm-0 btn btn-grupo">Guardar cambios</button>
+                        </div>
+                    </div>
+                    <div *ngIf="!isAdmin"><span>Privacidad de Grupo: </span>
+                        <b *ngIf="grupo.closed">Privado</b>
+                        <b *ngIf="!grupo.closed">Público</b>
+                    </div>
+                    <div class="row gx-3 mb-3">
+                        <label class="small mb-1">Tags:</label>
+                        <div class="col-auto tags ms-2" *ngFor="let tag of infoGrupoAdmin.intereses">
+                            {{tag.name}}
+
+                            <i *ngIf="isAdmin" class="fa-solid fa-xmark text-danger ms-1 close-btn"
+                                (click)="onDeleteInteres(tag.id)"></i>
+                        </div>
+                        <div *ngIf="isAdmin" class="row mt-1">
+                            <select class="col-12 col-lg-4 mt-lg-0  me-lg-2 search-select" name="Interes" id="Interes"
+                                [(ngModel)]="tag">
+                                <option [value]="'Tags'" selected disabled default>Agregar tags</option>
+                                <option *ngFor="let tag of tags" [value]="tag.id">{{tag.name}}</option>
+                            </select>
+                            <div class="col-auto mt-2 tags add-button">
+                                <i class="fa-solid fa-plus mt-2" (click)="addTagGrupo()"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="error">
+                        <app-error [error]="mesage" (click)="close()"></app-error>
+                    </div>
+
+                    <div *ngIf="success">
+                        <app-success [sucess]="mesage" (click)="close()"></app-success>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="card mb-4 mt-3">
+                <div class="card-header d-flex justify-content-between align-items-center">Usuarios
+                    <span class="badge span-numero rounded-pill">{{grupo.numberOfStudents}}</span>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group  border-start-0 border-end-0 border-top-0">
+                        <li class="list-group-item  border-start-0 border-end-0 border-top-0 d-flex justify-content-between"
+                            *ngFor="let student of grupo.students">
+                            <app-student-img [data]="student"></app-student-img>
+                            <i *ngIf="administrador.id != student.id && student.id != myId() && grupo.numberOfStudents > 2"
+                                class="fa-solid fa-ban text-danger my-auto" (click)="openPopup(student.id)"
+                                [ngxTippy]="templateBan" [tippyProps]="{
+                                    arrow: false,
+                                    allowHTML: true,
+                                    placement: 'left'
+                                  }"></i>
+                            <i *ngIf="administrador.id == student.id" class="fa-solid fa-user-gear text-success my-auto"
+                                [ngxTippy]="templateAdmin" [tippyProps]="{
+                                    arrow: false,
+                                    allowHTML: true,
+                                    placement: 'left'
+                                  }"></i>
+
+                            <template #templateAdmin>
+                                <span class="test">Administrador</span>
+                            </template>
+                            <template #templateBan>
+                                <span class="test">Solicitar expulsión</span>
+                            </template>
+                            <div *ngIf="administrador.id != student.id && student.id != myId()" class="modal d-block modal-hide " tabindex="-1" role="dialog" id="{{student.id}}">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Solicitud de expulsión</h5>
+                                            <button type="button" class="btn btn-danger" (click)="closePopup(student.id)">X</button>
+                                        </div>
+                                        <div class="modal-body d-flex justify-content-center row">
+                                           <p>Usted está a punto de solicitar una expulsión del usuario {{student.firstName}} {{student.lastName}}. Si está de acuerdo se le enviará una solicitud a cada miembro del grupo para que voten. Es necesario que todos voten 'ACEPTAR' para que se acepte la expulsión.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                <button class="btn btn-ingresar btn-sm col"
+                                                    (click)="solicitarExpulsion(student.id)">Votar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div *ngIf="isAdmin" class="card mb-4 mt-3">
+                <!-- Two factor authentication card-->
+
+                <!-- Delete account card-->
+
+                <div class="card-header">Eliminar grupo</div>
+                <div class="card-body">
+                    <p>Eliminar el grupo es una acción permanente y no puede deshacerse. Si estás seguro de que
+                        deseas
+                        eliminar el grupo, selecciona el botón de abajo</p>
+                    <button (click)="onDeleteGroup()" class="btn btn-danger-soft text-danger" type="button">Lo
+                        entiendo,
+                        deseo eliminar el grupo
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <app-publicidad></app-publicidad>
+</div>

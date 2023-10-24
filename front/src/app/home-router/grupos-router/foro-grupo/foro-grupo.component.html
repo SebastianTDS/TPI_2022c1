@@ -1,0 +1,115 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<!--<h1 class="text-center my-5">Foro</h1>-->
+<div class="container-fluid px-0 h-100">
+    <div class="main-body h-100">
+        <div class="gutters-sm border border-2 rounded-container h-100 ">
+            <div class=" me-5 ms-5 pt-4 pb-1 mb-2">
+                <div class="container-fluid fondo-base mb-4">
+                    <div class=" row align-items-center justify-content-around">
+                        <b class="col-auto texto-base text-center">Filtros: </b>
+                        <select [(ngModel)]="formTag" id="tags" class="col-auto forum-select" aria-label="Escoge tu tag"
+                            required [ngModelOptions]="{standalone: true}">
+                            <option selected disabled value="">Escoge tu tag...</option>
+                            <option *ngFor="let tag of tags" [ngValue]="tag.id">{{tag.name}}</option>
+                        </select>
+
+
+                        <div class="form col-auto mt-1">
+                            <input [(ngModel)]="formName" type="text" name="busqueda" id="busqueda-foro"
+                                class=" busqueda forum-select-2" placeholder="Buscar" #buscarField>
+                        </div>
+
+                        <div class="col-auto mt-1">
+                            <button (click)="onSearch()" class=" buscarPost btn rounded-pill mb-2 me-2"><i
+                                    class="fa-solid fa-magnifying-glass me-2"></i>Buscar Post</button>
+                            <div class="d-inline-block mt-2">
+                                <a class=" mb-2  buscarPost btn  rounded-pill" data-bs-toggle="collapse"
+                                    href="#collapseExample" role="button" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    Crear Post
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse" id="collapseExample">
+                    <div class="container-fluid fondo-base mt-1">
+                        <form (ngSubmit)="createPost()" class="register-form" id="register-form">
+                            <div class="form-group">
+                                <label for="title" class="form-label mt-2">
+                                    <h4>Título del post:</h4>
+                                </label>
+                                <input [(ngModel)]="title" type="text" name="title" id="title"
+                                    placeholder="Ingrese titulo del post" class="form-control {{errorStyle}}"
+                                    required />
+                            </div>
+                            <div class="form-group">
+                                <label for="content" class="form-label mt-2">
+                                    <h4>Contenido del post:</h4>
+                                </label>
+                                <ckeditor (change)="onChange($event)" id="content"></ckeditor>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="content" class="form-label mt-2">
+                                    <h4>Selecciona un tag:</h4>
+                                </label>
+                                <div class="mt-1 ms-1">
+                                    <select [(ngModel)]="createPostTag" id="creatPostTag"
+                                        class="col-12 col-lg-2 mt-lg-0  me-lg-2 forum-select" aria-label="Escoge tu tag"
+                                        required [ngModelOptions]="{standalone: true}">
+                                        <option selected disabled value="">Escoge tu tag...</option>
+                                        <option *ngFor="let tag of tags" [ngValue]="tag.id">{{tag.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mt-2 d-flex justify-content-end">
+                                <button name="signup" id="signup" class="btn buscarPost m-1"
+                                    value="Registrar">Guardar</button>
+                                <button type="button" class="btn btn-danger  m-1" href="#collapseExample"
+                                    data-bs-toggle="collapse">Cancelar</button>
+                            </div>
+                            <div *ngIf="success" class="alert alert-success alert-dismissible fade show mt-2"
+                                role="alert">
+                                <strong>Se ha creado con exito su post!</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <div *ngIf="error" class="alert alert-danger mt-2" role="alert">
+                                <strong>{{error}}</strong>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="container-fluid">
+
+                <div *ngIf="post.length == 0" class="fondo-base texto-base text-center my-2">¡No existen resultados!
+                </div>
+                <div class="buttons-pag mt-2">
+                    <nav aria-label="Page navigation example">
+
+                        <ul class="pagination d-flex justify-content-center ">
+                            <li class="btn  bg-primary link-primary page-item page-link me-4" (click)="paginaPrevia()">
+                                Página  anterior</li>
+                            <li class="btn  bg-primary  link-primary page-item page-link" (click)="paginaSiguiente()">
+                                Página  siguiente</li>
+                        </ul>
+                    </nav>
+                </div>
+                <app-post-group [data]="val" *ngFor="let val of post"></app-post-group>
+            </div>
+
+            <div class="mx-3">
+                <app-publicidad></app-publicidad>
+            </div>
+        </div>
+    </div>
+</div>

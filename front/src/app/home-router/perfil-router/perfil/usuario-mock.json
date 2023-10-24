@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nombre": "Juan",
+    "apellido": "Perez",
+    "imagen": "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg",
+    "email": "jperez@alumno.unlam.edu.ar",
+    "telefono": "11-2345-6789",
+    "carrera": "Desarrollo Web",
+    "tags": [
+      {"nombre":"#Java", "background": "#9acd32", "color": "#150d4b"},
+      {"nombre":"#Front", "background":"#7fffd4","color": "#150d4b" },
+      {"nombre":"#Html", "background": "#9acd32","color": "#150d4b"},
+      {"nombre":"#CSS", "background":"#7fffd4","color": "#150d4b"}
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "German",
+    "apellido": "Fernandez",
+    "imagen": "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg",
+    "email": "ffernandez@gmail.com",
+    "telefono": "11-2342-2229",
+    "carrera": "Desarrollo Web",
+    "tags": [
+      {"nombre":"#Angular", "color": "#9acd32"},
+      {"nombre":"#Front", "color":"#7fffd4"},
+      {"nombre":"#Html", "color": "#9acd32"},
+      {"nombre":"#CSS", "color":"#7fffd4"}
+    ]
+  }
+]

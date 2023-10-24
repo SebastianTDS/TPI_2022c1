@@ -1,0 +1,13 @@
+.mi-paginacion ::ng-deep .ngx-pagination .current {
+    background: var(--color3);
+    color: var(--color6);
+}
+
+.mi-paginacion ::ng-deep ul{
+    padding: 0!important;
+}
+
+.card-menu {
+    background-color: #FBFBFD;
+    margin-bottom: 2em;
+}

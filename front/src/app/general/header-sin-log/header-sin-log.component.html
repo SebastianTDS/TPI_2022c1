@@ -1,0 +1,28 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand logo d-flex align-items-center" [routerLink]="['']">
+        <img src="assets/marca/LogotipoV3.png" height="30"  class="d-inline-block align-text-center me-2" alt="">
+      </a>
+
+      <div class="containerButtons ">
+      <div class="login mx-lg-3 ms-3 me-1 containerButtons2">
+        <a class="btn  btn-block" [routerLink]="['/login']"> Iniciar Sesión
+          <i class="fa-solid fa-arrow-right-to-bracket">
+          </i>
+        </a>
+       </div>
+
+      <div class="register mx-lg-3 me-3 ms-1 containerButtons2">
+        <a class="btn   btn-block" [routerLink]="['/register']">Registrar
+          <i class="fa-solid fa-user-plus"></i>
+        </a>
+      </div>
+
+      </div>
+
+    </div>
+
+
+  </nav>
+</header>

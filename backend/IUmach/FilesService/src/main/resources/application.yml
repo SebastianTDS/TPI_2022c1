@@ -1,0 +1,27 @@
+server:
+  port: 8097
+
+SECRET_ACCESS_KEY: ${SECRET_ACCESS_KEY}
+ID_ACCESS_KEY: ${ID_ACCESS_KEY}
+REGION: ${REGION}
+BUCKET_NAME: ${BUCKET_NAME}
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  application:
+    name: FileService
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://files.clxprdqhqk07.us-east-1.rds.amazonaws.com:3306/files
+    username: ${SERVICE_USER}
+    password: ${SERVICE_PASSWORD}

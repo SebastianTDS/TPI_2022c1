@@ -1,0 +1,80 @@
+<app-curva></app-curva>
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="container-fluid my-5">
+  <div class=" gutters-sm border border-2 rounded-container pb-1 card">
+    
+    <div class="container-fluid row d-flex justify-content-center">
+
+      <div class="container-fluid gutters-sm border border-2 mt-5 mb-4 card w-100 pb-2 pt-2 ms-4">
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="carousel-pic-first2" aria-hidden="true" alt="carrousel 5"></div>
+              <div class="container">
+                <div class="carousel-caption text-start">
+                  <h1>Toda la información en un solo lugar.</h1>
+                  <p>¡Busca lo que necesites, o ayuda a los demás a encontrar una solución!.</p>
+                  <p>
+                    <button [routerLink]="['/home/tools/forum']" class="btn btn-lg p-2 main-btn" href="#">Ingresar al foro
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-pic-second2" aria-hidden="true" alt="carrousel 4"></div>
+              <div class="container">
+                <div class="carousel-caption text-start">
+                  <h1>Encuentra el equipo ideal en solo un instante.</h1>
+                  <p>Fácil, Intuitivo y poderoso. Conoce a tu próximo equipo gracias a nuestro algoritmo de selección.</p>
+                  <p>
+                    <button [routerLink]="['/home/buscar-grupos']" class="btn btn-lg p-2 main-btn px-4" href="#">Buscar grupos
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-pic-third2" aria-hidden="true" alt="carrousel 2"></div>
+              <div class="container">
+                <div class="carousel-caption text-start">
+                  <h1 class="allInOne">¡Ármalo a tu medida!.</h1>
+                  <p class="allInOne">¿No encuentras un grupo que cumpla tus expectativas? No hay problema, con IUmach podrás armar un grupo a tu medida.</p>
+                  <p>
+                    <button [routerLink]="['/home/crear-grupo']" class="btn btn-lg p-2 main-btn px-4" href="#">Crear grupo
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <h1 class="text-center my-4 ms-4">Grupos recientes</h1>
+      <div class="row container-fluid ms-4">
+        <app-tarjeta-mi-grupo [dataGroupo]="grupo" *ngFor="let grupo of misGrupos"
+                              class="col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 d-flex justify-content-center"></app-tarjeta-mi-grupo>
+      </div>
+
+    </div>
+    <div class="container-fluid">
+      <app-publicidad></app-publicidad>
+    </div>
+
+  </div>
+</div>

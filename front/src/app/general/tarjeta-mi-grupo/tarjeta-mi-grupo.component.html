@@ -1,0 +1,41 @@
+<div class="row my-2">
+  <div class="card rounded-3 col-9 p-3 mt-2 mb-5 bg-body rounded">
+    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+      <div class="img-fixed rounded-3 my-4 row align-items-center gx-0">
+        <img *ngIf="image"src="{{image}}"
+             class="img-fluid col" alt=""/>
+        <img *ngIf="!image"src="{{dataGroupo.image}}"
+             class="img-fluid col" alt=""/>
+      </div>
+      <a href="#">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);"></div>
+      </a>
+    </div>
+    <div class="card-body rounded-3 ">
+      <h5 class="card-title font-weight-bold"><a>{{ dataGroupo.name}}</a></h5>
+      <hr>
+      <p class="card-text fw-bold text-center">
+        {{dataGroupo.career}}
+      </p>
+
+    </div>
+  </div>
+  <div class="m-0 p-0 col-3">
+
+    <div *ngIf="dataGroupo.closed" class="col-2 rounded-end my-3 label h-auto w-75 text-center">
+      <i class="fa-solid fa-lock text-light p-1"></i>
+    </div>
+    <div *ngIf="!dataGroupo.closed" class="col-2 rounded-end my-3 label h-auto w-75 text-center">
+      <i class="fa-solid fa-lock-open text-light p-1"></i>
+    </div>
+    <div class="col-2 rounded-end my-3 label h-auto w-75 text-center">
+      <i class="fa-solid fa-user-group text-light p-1"> {{dataGroupo.numberOfStudents}}/{{dataGroupo.maxNumberOfStudents}}</i>
+    </div>
+    <a [routerLink]="['/','home','g',dataGroupo.id]"><div class="col-2 rounded-end my-3 label h-auto w-75 text-center selecionado">
+      <i class="fa-solid fa-arrow-right-to-bracket p-1"></i>
+    </div></a>
+
+  </div>
+
+</div>
+

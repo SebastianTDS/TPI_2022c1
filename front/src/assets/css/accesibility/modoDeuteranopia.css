@@ -1,0 +1,17 @@
+:root{
+  --color1:#004797;
+  --color2:#0052AA;
+  --color3: #004A9B;
+  --color4: #0160CA;
+  --color5: #C4C8ED;
+
+  --fondo: #E7E8FF;
+  --texto: --color1;
+}
+
+h1{
+  color: var(--color1);
+}
+.img-bg{
+  background-image: url("../../img/FondoClaro.png");
+}

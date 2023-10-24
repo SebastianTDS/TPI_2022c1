@@ -1,0 +1,36 @@
+section{
+    max-width: 23rem;
+}
+.card{
+    background: var(--color6);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px !important;
+}
+.card-title, .card-text{
+    color: var(--color1);
+}
+
+.img-fixed{
+    max-width: 250px;
+    height: 165px;
+    background-color: var(--color5);
+}
+
+.star-color{
+    color: var(--color2);
+}
+.star-color-u{
+  color: var(--color4);
+}
+.label{
+    background: var(--color3);
+}
+.selecionado:hover{
+    background: var(--color5);
+    color: var(--color2);
+    transform: scale(1.2);
+}
+.selecionado{
+    background: var(--color3);
+    color: var(--color6);
+    transition: background ease-in .3s;
+}

@@ -1,0 +1,245 @@
+<div class="container-fluid">
+  <div class="d-flex justify-content-around contenedor-recompenzas">
+    <div [ngxTippy]="templateConocedor" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.conocedor>=5&&user.conocedor<10" class="bronce d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-brain fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateConocedor" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.conocedor>=10&&user.conocedor<20" class="plata d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-brain fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateConocedor" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.conocedor>=20&&user.conocedor<40" class="oro d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-brain fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateConocedor" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.conocedor>=40" class="diamante d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-brain fa-2x color"></i>
+    </div>
+    <template #templateConocedor>
+      <span class="test">Recompensa Conocedor</span>
+    </template>
+
+    <div [ngxTippy]="templateOrganizado" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }"  *ngIf="user.organizado>=5&&user.organizado<10"
+         class="bronce d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-arrow-up-short-wide fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateOrganizado" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.organizado>=10&&user.organizado<20"
+         class="plata d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-arrow-up-short-wide fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateOrganizado" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.organizado>=20&&user.organizado<40" class="oro d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-arrow-up-short-wide fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateOrganizado" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.organizado>=40" class="diamante d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-arrow-up-short-wide fa-2x color"></i>
+    </div>
+    <template #templateOrganizado>
+      <span class="test">Recompensa Organizado</span>
+    </template>
+
+    <div [ngxTippy]="templateProActivo" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.proActivo>=5&&user.proActivo<10" class="bronce d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-chart-line fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateProActivo" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.proActivo>=10&&user.proActivo<20" class="plata d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-chart-line fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateProActivo" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.proActivo>=20&&user.proActivo<40" class="oro d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-chart-line fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateProActivo" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.proActivo>=40" class="diamante d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-chart-line fa-2x color"></i>
+    </div>
+    <template #templateProActivo>
+      <span class="test">Recompensa Pro Activo</span>
+    </template>
+  </div>
+
+
+  <div class="d-flex justify-content-around contenedor-recompenzas">
+    <div [ngxTippy]="templateColaborador" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.colaborador>=5&&user.colaborador<10"
+         class="bronce d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-handshake-angle fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateColaborador" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.colaborador>=10&&user.colaborador<20"
+         class="plata d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-handshake-angle fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateColaborador" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.colaborador>=20&&user.colaborador<40"
+         class="oro d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-handshake-angle fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateColaborador" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.colaborador>=40" class="diamante d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-handshake-angle fa-2x color"></i>
+    </div>
+    <template #templateColaborador>
+      <span class="test">Recompensa Colaborador</span>
+    </template>
+
+    <div [ngxTippy]="templateResponsable" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.responsable>=5&&user.responsable<10"
+         class="bronce d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-calendar-day fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateResponsable" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.responsable>=10&&user.responsable<20"
+         class="plata d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-calendar-day fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateResponsable" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.responsable>=20&&user.responsable<40"
+         class="oro d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-calendar-day fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateResponsable" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.responsable>=40" class="diamante d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-calendar-day fa-2x color"></i>
+    </div>
+    <template #templateResponsable>
+      <span class="test">Recompensa Responsable</span>
+    </template>
+
+    <div [ngxTippy]="templateDetallista" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.detallista>=5&&user.detallista<10"
+         class="bronce d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-list-check fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateDetallista" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.detallista>=10&&user.detallista<20"
+         class="plata d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-list-check fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateDetallista" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.detallista>=20&&user.detallista<40" class="oro d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-list-check fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateDetallista" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.detallista>=40" class="diamante d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-list-check fa-2x color"></i>
+    </div>
+    <template #templateDetallista>
+      <span class="test">Recompensa Detallista</span>
+    </template>
+  </div>
+
+  <div class="d-flex justify-content-around contenedor-recompenzas">
+    <div [ngxTippy]="templateContribuciones" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.contribuciones>=5&&user.contribuciones<10"
+         class="bronce d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-comments fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateContribuciones" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.contribuciones>=10&&user.contribuciones<20"
+         class="plata d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-comments fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateContribuciones" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.contribuciones>=20&&user.contribuciones<40"
+         class="oro d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-comments fa-2x color"></i>
+    </div>
+    <div [ngxTippy]="templateContribuciones" [tippyProps]="{
+      arrow: false,
+      allowHTML: true,
+      placement: 'top'
+      }" *ngIf="user.contribuciones>=40" class="diamante d-flex justify-content-around align-content-center">
+      <i class="fa-solid fa-comments fa-2x color"></i>
+    </div>
+    <template #templateContribuciones>
+      <span class="test">Recompensa por Contribuciones</span>
+    </template>
+  </div>
+</div>

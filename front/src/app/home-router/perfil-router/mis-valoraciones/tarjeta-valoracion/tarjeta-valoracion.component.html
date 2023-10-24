@@ -1,0 +1,79 @@
+<app-loading *ngIf="loading"></app-loading>
+<div *ngIf="valoracionNoRealizada"
+  class=" row  justify-content-between list-group-item list-group-item-action flex-column sombra ">
+
+  <div class="row col-12 m-0">
+    <div class="input-box row align-items-center justify-content-between col-12">
+      <div class="col-auto align-middle ">
+        <app-img-student-notification [notificationImg]="data.valuationIn.id" class="col-auto">
+        </app-img-student-notification>
+        <span class="fw-bold">{{data.valuationIn.firstName|uppercase}} {{data.valuationIn.lastName|uppercase}}</span>
+        <span> del grupo {{data.nameGroup|uppercase}}
+          necesita ser calificado</span>
+      </div>
+      <div class="col-auto pt-1 algn-self-end">
+        <small >{{data.date| date:'dd/MM/yyyy h:mm:ss a'}}</small>
+      </div>
+    </div>
+
+
+    <div class="input-box row col-auto mt-2">
+      <form class="d-flex align-content-center" (ngSubmit)="enviarValoracion()" [formGroup]="forms">
+        <div class="row">
+          <div class="col-md-3 col-sm-4 row mx-2 ">
+            <div class="form-check form-switch ">
+              <input class="form-check-input" formControlName="responsable" type="checkbox" id="switch-1-{{data.id}}"
+                checked>
+              <label class="form-check-label" for="switch-1-{{data.id}}">Responsable</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" formControlName="proActivo" type="checkbox" id="switch-2-{{data.id}}"
+                checked>
+              <label class="form-check-label" for="switch-2-{{data.id}}">Proactivo</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" formControlName="colaborador" type="checkbox" id="switch-3-{{data.id}}"
+                checked>
+              <label class="form-check-label" for="switch-3-{{data.id}}">Colaborador</label>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-4 row mx-2 ">
+            <div class="form-check form-switch">
+              <input class="form-check-input" formControlName="organizado" type="checkbox" id="switch-4-{{data.id}}"
+                checked>
+              <label class="form-check-label" for="switch-4-{{data.id}}">Organizado</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" formControlName="conocedor" type="checkbox" id="switch-5-{{data.id}}"
+                checked>
+              <label class="form-check-label" for="switch-5-{{data.id}}">Conocedor</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" formControlName="detallista" type="checkbox" id="switch-6-{{data.id}}"
+                checked>
+              <label class="form-check-label" for="switch-6-{{data.id}}">Detallista</label>
+            </div>
+          </div>
+          <div class="col-auto mt-4 ms-auto p-1">
+            <button type="submit" class="btn btn-calificar ">Calificar</button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+<div *ngIf="!valoracionNoRealizada" class="alert alert-success alert-dismissible fade show" role="alert">
+  <span>
+    <span class="fw-bold">Gracias por valorar a
+        <app-img-student-notification [notificationImg]="data.valuationIn.id" class="col-auto">
+        </app-img-student-notification>
+      {{data.valuationIn.firstName|uppercase}} {{data.valuationIn.lastName|uppercase}}</span> <span> del grupo
+      {{data.nameGroup|uppercase}}</span></span>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div *ngIf="error && valoracionNoRealizada" class="alert alert-danger alert-dismissible" role="alert">
+  <p>{{mesage}}</p>
+</div>

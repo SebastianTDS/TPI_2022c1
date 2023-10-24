@@ -1,0 +1,126 @@
+[
+  {
+    "id": 1,
+    "nombre": "Desarrollo web",
+    "descripcion": "Dessarrollo de aplicaciones web",
+    "materias": [
+      {
+        "id": 1,
+        "nombre": "Desarrollo web Ingles 1"
+      },
+      {
+        "id": 2,
+        "nombre": "Desarrollo web Ingles 2"
+      },
+      {
+      "id": 3,
+      "nombre": "Desarrollo web Ingles 3"
+      },
+      {
+        "id": 4,
+        "nombre": "Desarrollo web Ingles 4"
+      },
+      {
+        "id": 5,
+        "nombre": "Desarrollo web Computacion 1"
+      },
+      {
+        "id": 6,
+        "nombre": "Desarrollo web Computacion 2"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "Desarrollo Mobile",
+    "descripcion": "Dessarrollo de aplicaciones moviles",
+    "materias": [
+      {
+        "id": 1,
+        "nombre": "Desarrollo Mobile Ingles 1"
+      },
+      {
+        "id": 2,
+        "nombre": "Desarrollo Mobile Ingles 2"
+      },
+      {
+        "id": 3,
+        "nombre": "Desarrollo Mobile Ingles 3"
+      },
+      {
+        "id": 4,
+        "nombre": "Desarrollo Mobile Ingles 4"
+      },
+      {
+        "id": 5,
+        "nombre": "Desarrollo Mobile Computacion 1"
+      },
+      {
+        "id": 6,
+        "nombre": "Desarrollo Mobile Computacion 2"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Abogacia",
+    "descripcion": "abogacia",
+    "materias": [
+      {
+        "id": 1,
+        "nombre": "Abogacia Ingles 1"
+      },
+      {
+        "id": 2,
+        "nombre": "Abogacia Ingles 2"
+      },
+      {
+        "id": 3,
+        "nombre": "Abogacia Ingles 3"
+      },
+      {
+        "id": 4,
+        "nombre": "Abogacia Ingles 4"
+      },
+      {
+        "id": 5,
+        "nombre": "Abogacia Computacion 1"
+      },
+      {
+        "id": 6,
+        "nombre": "Abogacia Computacion 2"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nombre": "Medicina",
+    "descripcion": "medicina",
+    "materias": [
+      {
+        "id": 1,
+        "nombre": "Medicina Ingles 1"
+      },
+      {
+        "id": 2,
+        "nombre": "Medicina Ingles 2"
+      },
+      {
+        "id": 3,
+        "nombre": "Medicina Ingles 3"
+      },
+      {
+        "id": 4,
+        "nombre": "Medicina Ingles 4"
+      },
+      {
+        "id": 5,
+        "nombre": "Medicina Computacion 1"
+      },
+      {
+        "id": 6,
+        "nombre": "Medicina Computacion 2"
+      }
+    ]
+  }
+]

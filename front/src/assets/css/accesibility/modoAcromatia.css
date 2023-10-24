@@ -1,0 +1,18 @@
+:root{
+  --color1:#060606;
+  --color2:#4D4D4D;
+  --color3: #828282;
+  --color4: #C0C0C0;
+  --color5: #F1F1F1;
+
+  --fondo: #E7E8FF;
+  --texto: --color1;
+}
+
+h1{
+  color: var(--color1);
+}
+
+.img-bg{
+  background-image: url("../../img/FondoOscuro.png");
+}

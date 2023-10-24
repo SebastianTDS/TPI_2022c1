@@ -1,0 +1,16 @@
+server:
+  port: 8088
+  
+spring:
+  application:
+    name: NotificationService
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://notification.clxprdqhqk07.us-east-1.rds.amazonaws.com:3306/notification
+    username: ${SERVICE_USER}
+    password: ${SERVICE_PASSWORD}
+

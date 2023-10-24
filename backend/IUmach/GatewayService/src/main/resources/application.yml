@@ -1,0 +1,41 @@
+server:
+  port: 8761
+
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+      routes:
+        - id: studentservice
+          uri: http://localhost:8085
+          predicates:
+            - Path=/student/**,/valoration/**,/group/**,/request-join/**
+        - id: algorithmservice
+          uri: http://localhost:8090
+          predicates:
+            - Path=/algorithm/**
+        - id: forumservice
+          uri: http://localhost:8095
+          predicates:
+            - Path=/forum/**
+        - id: fileservice
+          uri: http://localhost:8097
+          predicates:
+              - Path=/file/**
+        - id: notificationservice
+          uri: http://localhost:8088
+          predicates:
+            - Path=/notification/**
+        - id: calendarservice
+          uri: http://localhost:8096
+          predicates:
+            - Path=/calendar/**

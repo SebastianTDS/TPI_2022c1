@@ -1,0 +1,179 @@
+<app-curva></app-curva>
+<app-loading *ngIf="loading"></app-loading>
+<div class="container-fluid">
+  <div *ngIf="error">
+    <app-error [error]="error" (click)="close()"></app-error>
+  </div>
+
+  <div *ngIf="success">
+    <app-success [sucess]="success" (click)="close()"></app-success>
+  </div>
+
+</div>
+<h1 class="text-center">Editar Intereses</h1>
+<div class=" my-3 d-flex justify-content-around row">
+  <div class="card col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="card-body">
+      <div class="col-12 p-3">
+        <h4>Régimen académico</h4>
+        <hr>
+        <h5>Facultad</h5>
+        <hr>
+        <form (ngSubmit)="onRegisterMateria()" class="register-form" id="materias-form">
+          <div class="form-group">
+            <label for="formFacultad"><i class="fa-solid fa-building-columns zmdi zmdi-lock-outline mr-1 p-2"></i></label>
+            <select [(ngModel)]="formFacultad" class="form-select ps-5" id="formFacultad"
+                    required
+                    (ngModelChange)="cargarDepartamentos()"
+                    [ngModelOptions]="{standalone: true}">
+              <option selected disabled value="">Escoge tu universidad...</option>
+              <option [ngValue]="facu.abr" *ngFor="let facu of facultades">{{facu.name}}</option>
+            </select>
+          </div>
+          <div class="form-group form-button d-flex justify-content-center">
+            <div (click)="cambiarFacultad()" class="button-submitt">Guardar</div>
+          </div>
+
+          <hr>
+          <h5>Cursada</h5>
+          <hr>
+          <div class="form-group">
+            <label for="departamento"><i class="fa-solid fa-building-columns zmdi zmdi-lock-outline mr-1 p-2"></i></label>
+            <select [(ngModel)]="formDepartamento" id="departamento" class="form-select ps-5"
+                    aria-label="Escoge tu Departamento" required
+                    (ngModelChange)="cargarCarreras()" [ngModelOptions]="{standalone: true}">
+
+              <option selected disabled value="">Escoge tu departamento...</option>
+              <option *ngFor="let depto of departamentos" [ngValue]="depto.id">{{depto.name}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="carrera"><i class="fa-solid fa-graduation-cap zmdi zmdi-lock-outline mr-1 p-2"></i></label>
+            <select [(ngModel)]="formCarrera" id="carrera" class="form-select ps-5"
+                    aria-label="Escoge tu carrera" required
+                    (ngModelChange)="cargarMaterias()" [ngModelOptions]="{standalone: true}">
+              <option selected disabled value="">Escoge tu carrera...</option>
+              <option *ngFor="let carrera of carreras" [ngValue]="carrera.id">{{carrera.name}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="materia"><i class="fa-solid fa-book-open zmdi zmdi-lock-outline mr-1 p-2"></i></label>
+            <select [(ngModel)]="formMateria" id="materia" class="form-select ps-5"
+                    aria-label="Escoge tu materia" required
+                    (ngModelChange)="cargarTurnos()"
+                    [ngModelOptions]="{standalone: true}">
+              <option selected disabled value="">Escoge tu materia...</option>
+              <option *ngFor="let materia of materias" [ngValue]="materia.id">{{materia.title}}
+                - {{materia.codigo}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="turno"><i class="fa-solid fa-hourglass-end zmdi zmdi-lock-outline mr-1 p-2"></i></label>
+            <select [(ngModel)]="formTurno" id="turno" class="form-select ps-5"
+                    aria-label="Escoge tu turno" required
+                    [ngModelOptions]="{standalone: true}">
+              <option selected disabled value="">Escoge tu turno...</option>
+              <option *ngFor="let tur of turnos" [ngValue]="tur|uppercase">{{tur|uppercase}}</option>
+
+            </select>
+          </div>
+
+          <div class="form-group form-button d-flex justify-content-center">
+            <button name="signup" id="sign" class="form-submit" value="Registrar">Agregar</button>
+          </div>
+
+        </form>
+        <div class="mt-3">
+          <div class="col-sm-12 mb-3">
+            <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded">
+              <div class="card-body">
+                <h6 class="d-flex align-items-center titulo-recompensa-tag mb-3"><i
+                  class="material-icons text-info mr-2"></i>Mis Carreras</h6>
+                <div class="row">
+                  <div class="col-lg-6 col-md-12 col-sm-12 " *ngFor="let car of user.carreras">
+                    <h6 class="tag rounded-3 p-1 d-flex justify-content-between">{{ car.name }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                              (click)="onDeleteCarrera(car)"></button>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 mb-3">
+            <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded">
+              <div class="card-body">
+                <h6 class="d-flex align-items-center titulo-recompensa-tag mb-3"><i
+                  class="material-icons text-info mr-2"></i>Mis Materias</h6>
+                <div class="row">
+                  <div class="col-lg-6 col-md-12 col-sm-12 " *ngFor="let mat of user.materiasDia">
+                    <h6 class="tag rounded-3 p-1 d-flex justify-content-between">{{ mat.title }} - {{ mat.codigo }} -
+                      Dia
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                              (click)="onDeleteMateria(mat)"></button>
+                    </h6>
+                  </div>
+                  <div class="col-lg-6 col-md-12 col-sm-12 " *ngFor="let mat of user.materiasTarde">
+                    <h6 class="tag rounded-3 p-1 d-flex justify-content-between">{{ mat.title }} - {{ mat.codigo }} -
+                      Tarde
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                              (click)="onDeleteMateria(mat)"></button>
+                    </h6>
+                  </div>
+                  <div class="col-lg-6 col-md-12 col-sm-12 " *ngFor="let mat of user.materiasNoche">
+                    <h6 class="tag rounded-3 p-1 d-flex justify-content-between">{{ mat.title }} - {{ mat.codigo }} -
+                      Noche
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                              (click)="onDeleteMateria(mat)"></button>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card col-xs-12 col-sm-12 col-md-5 col-lg-5">
+    <div class="card-body">
+      <div class="col-12 p-3">
+        <form (ngSubmit)="onRegisterTag()" class="register-form" id="tags-form">
+          <h4>Tags de interes</h4>
+          <div class="form-group my-2">
+            <label for="tags"><i class="fa-solid fa-tag zmdi zmdi-lock-outline mr-1 p-2"></i></label>
+            <select [(ngModel)]="formTag" id="tags" class="form-select ps-5"
+                    aria-label="Escoge tu tag" required
+                    [ngModelOptions]="{standalone: true}">
+              <option selected disabled value="">Escoge tu tag...</option>
+              <option *ngFor="let tag of tags" [ngValue]="tag.id">{{tag.name}}</option>
+            </select>
+          </div>
+          <div class="form-group form-button d-flex justify-content-center">
+            <button name="signup" id="signs" class="form-submit" value="Registrar">Agregar</button>
+          </div>
+        </form>
+
+
+        <div class="col-sm-12 mt-3">
+          <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="card-body">
+              <h6 class="d-flex align-items-center titulo-recompensa-tag mb-3"><i
+                class="material-icons text-info mr-2"></i>Mis Tags</h6>
+              <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12 " *ngFor="let tag of user.intereses">
+                  <h6 class="tag rounded-3 p-1 d-flex justify-content-between">{{ tag.name }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                            (click)="onDeleteInteres(tag)"></button>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<app-curva></app-curva>
+<app-loading *ngIf="loading"></app-loading>
+<div class="container-fluid my-5">
+    <div class="row">
+        <a class="menu-toggle" (click)="mostrarMenu()"  role="button" ><i class="fas fa-bars"></i></a>
+        <div class="col-xl-3 col-lg-3 p-3 border border-2 rounded-container menu sidemenu-hidden ">
+            <div class="card mb-4  card-menu">
+              <div class="card-header card-header-menu text-center"><span>{{grupo.name}}</span></div>
+                <div class="card-body text-center">
+                    <!-- Profile picture image-->
+                    <img *ngIf="imageProfile" class="img-account-profile rounded-circle mb-2"
+                         src="{{imageProfile}}" alt="">
+                    <img *ngIf="!imageProfile" class="img-account-profile rounded-circle mb-2"
+                         src="{{grupo.image}}" alt="">
+                    <!-- Profile picture help block-->
+                    <div *ngIf="isAdmin">
+                        <div class="small font-italic mb-4 text-card-img">Imágenes no mayores a 5 MB</div>
+                      <div *ngIf="errorImg" class="alert alert-warning" role="alert">
+                        {{errorImg}}
+                      </div>
+                      <label for="fileImg" class="btn btn-grupo " type="button">Subir nueva imagen<i
+                                class="ps-2 fa-solid fa-upload"></i></label>
+                        <input type="file" [disabled]="loading" id="fileImg" (change)="onImagenPerfil($event)"
+                               style="display: none">
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="isAdmin" class="card mb-4 card-menu card-header-menu">
+                <div class="card-header d-flex justify-content-between align-items-center">Invitar a un
+                    estudiante
+                </div>
+                <div  class="card-body d-flex">
+                    <input [(ngModel)]="formEmailInvitado" id="formEmailInvitado" class="form-control"
+                           type="text"
+                           placeholder="Ingresá un correo electrónico">
+                    <button class="btn btn-grupo ms-2" type="button" (click)="enviarInvitacion()">Invitar
+                    </button>
+                </div>
+            </div>
+            <div class="card mb-4 p-2 card-menu">
+                <ul class="list-group refs">
+                    <li class="list-group-item option-list"><a class="opcion-menu d-block" [routerLink]="['/','home','g',grupo.id]"><i class="fa-solid fa-book-open me-1"></i>
+                        Información</a></li>
+                    <li *ngIf="isAdmin" class="list-group-item option-list"><a class="opcion-menu d-block" [routerLink]="['/','home','g',grupo.id,'buscar-integrantes']"><i
+                            class="fa-solid fa-magnifying-glass me-1"></i> Buscar Integrantes</a></li>
+                    <li class="list-group-item option-list"><a class="opcion-menu d-block" [routerLink]="['/','home','g',grupo.id,'forum']"><i
+                            class="fa-solid fa-message me-1"></i> Foro</a></li>
+                    <li class="list-group-item option-list"><a class="opcion-menu d-block" [routerLink]="['/','home','g',grupo.id,'archivos']"><i
+                            class="fa-solid fa-folder me-1"></i> Archivos</a></li>
+                    <li class="list-group-item option-list"><a class="opcion-menu d-block" [routerLink]="['/','home','g',grupo.id,'calendario']"><i
+                            class="fa-solid fa-calendar me-1"></i> Eventos</a></li>
+                    <li class="list-group-item option-list"><a class="opcion-menu d-block" (click)="abandonarGrupo(grupo.id)"><i
+                            class="fa-solid fa-right-from-bracket me-1"></i> Abandonar grupo</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 h-auto contenido">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class=" mt-2 mt-xxl-0 mt-xl-0 mt-md-2 mt-sm-2 container-fluid text-center border border-2 rounded-container card-menu h-100 p-4">
+    <!--<h1>Repositorio de archivos de Grupo</h1>-->
+   <div class="row justify-content-between">
+      <div class="col-auto">
+         <div><b>Espacio utilizado:</b> {{size}} MB</div>
+         <div class="text-start"><b>Límite:</b> 50 MB</div>
+      </div>
+      <div class="col-auto">
+         <div class="text-end mb-3">
+            <label for="file" class="btn bg-table" type="button">Subir archivo</label>
+            <input type="file" [disabled]="loading" id="file" (change)="onFileUpload($event)" style="display: none">
+          </div>
+      </div>
+   </div>
+  
+   <div *ngIf="error">
+      <app-error [error]="error" (click)="close()"></app-error>
+   </div>
+   <table class="table table-archivos my-4">
+      <thead class="bg-table">
+      <tr>
+         <th scope="col">Archivo</th>
+         <th scope="col">Subido por</th>
+         <th scope="col">Fecha de subida</th>
+         <th scope="col">Eliminar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let archivo of archivos" class="archivo" id="{{archivo.id}}">
+         <td class="text-center" (click)="descargar(archivo.url)">
+               <i class="fa-solid fa-file-pdf me-1"
+                  *ngIf="archivo.extension == 'pdf'"
+                  style="color: brown;"></i>
+               <i class="fa-solid fa-file-powerpoint me-1"
+                  *ngIf="archivo.extension == 'ppt' || archivo.extension == 'pptx'"
+                  style="color: goldenrod;"></i>
+               <i class="fa-solid fa-file-excel me-1"
+                  *ngIf="archivo.extension == 'xls' || archivo.extension == 'xlsx' || archivo.extension == 'csv'"
+                  style="color: green;"></i>
+               <i class="fa-solid fa-file-zipper me-1"
+                  *ngIf="archivo.extension == 'rar' || archivo.extension == 'zip'"
+                  style="color: green;"></i>
+               <i class="fa-solid fa-image me-1"
+                  *ngIf="archivo.extension == 'png' || archivo.extension == 'jpg'|| archivo.extension == 'jpeg'|| archivo.extension == 'jpg'"
+                  style="color: green;"></i>
+               <i class="fa-solid fa-file-video me-1"
+                  *ngIf="archivo.extension == 'wmv' || archivo.extension == 'mp4'|| archivo.extension == 'mov'|| archivo.extension == 'm4a'|| archivo.extension == 'avi'"
+                  style="color: green;"></i>
+               <i class="fa-solid fa-file-lines me-1"
+                  *ngIf="archivo.extension == 'txt'"
+                  style="color: green;"></i>
+               <i class="fa-solid fa-file-word me-1"
+                  *ngIf="archivo.extension == 'docx'"
+                  style="color: green;"></i>
+               <i class="fa-solid fa-gif me-1"
+                  *ngIf="archivo.extension == 'gif'"
+                  style="color: green;"></i>
+               {{archivo.originalName}}
+         </td>
+         <td>{{archivo.userName}}</td>
+         <td>{{archivo.createAt| date:'dd/MM/yyyy h:mm:ss a'}}</td>
+         <td><i class="fa-solid fa-xmark eliminar" (click)="eliminar(archivo.name)"></i></td>
+      </tr>
+      </tbody>
+   </table>
+
+    <app-publicidad></app-publicidad>
+
+
+</div>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "idGrupo": 1,
+    "nombreNotificante": "Marcelo",
+    "nombreGrupo": "Los 4 genios",
+    "tipoNotificacion": "MENSAJE",
+    "fecha": "2022-03-22T18:25:43.511Z"
+  },
+  {
+    "id": 2,
+    "idGrupo": 2,
+    "nombreNotificante": "Sebastian",
+    "nombreGrupo": "Los 4 cracks",
+    "tipoNotificacion": "UNION",
+    "fecha": "2022-03-22T18:25:43.511Z"
+  },
+  {
+    "id": 3,
+    "idGrupo": 3,
+    "nombreNotificante": "Gonzalo",
+    "nombreGrupo": "Los 4 genios",
+    "tipoNotificacion": "SALIR",
+    "fecha": "2022-02-22T18:25:43.511Z"
+  },
+  {
+    "id": 4,
+    "idGrupo": 4,
+    "nombreNotificante": "Sebastian",
+    "nombreGrupo": "Los 4 genios",
+    "tipoNotificacion": "SOLICITUD",
+    "fecha": "2022-02-22T18:25:43.511Z"
+  },
+  {
+    "id": 5,
+    "idGrupo": 4,
+    "nombreNotificante": "Sebastian",
+    "nombreGrupo": "Los 4 genios",
+    "tipoNotificacion": "INVITACION",
+    "fecha": "2022-02-22T18:25:43.511Z"
+  }
+]

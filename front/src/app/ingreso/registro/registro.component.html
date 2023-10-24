@@ -1,0 +1,60 @@
+<app-header-sin-log></app-header-sin-log>
+<app-loading *ngIf="loading"></app-loading>
+<div class="main">
+  <!-- Sign up form -->
+  <section>
+    <div class="container pt-3">
+
+      <div class="container-fluid signup-error">
+        <div *ngIf="registradoOK" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+          <strong>Registro exitoso</strong> Se ha enviado un mail de verificación.
+          <button type="button" class="btn-close" (click)="close()"></button>
+        </div>
+        <div *ngIf="registradoFAIL" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+          <strong>Registro erróneo</strong> {{mesage}}
+          <button type="button" class="btn-close" (click)="close()"></button>
+        </div>
+      </div>
+
+      <div class="signup-content">
+        <div class="signup-form">
+          <h2 class="form-title">Registrarse</h2>
+          <form (ngSubmit)="onRegister()" class="register-form" id="register-form">
+            <div class="form-group">
+              <label class="label" for="email"><i class="fa-solid fa-at"></i></label>
+              <input class="input" [(ngModel)]="formMail" type="email" name="email" id="email" placeholder="Tu Email"
+                required />
+            </div>
+            <div class="form-group">
+              <label class="label" for="pass"><i class="fa-solid fa-key"></i></label>
+              <input class="input" [(ngModel)]="formPassword" type="password" name="pass" id="pass"
+                placeholder="Password" required />
+            </div>
+            <div class="form-group">
+              <label class="label" for="repass"><i class="fa-solid fa-key"></i></label>
+              <input class="input" [(ngModel)]="formRePassword" type="password" name="re_pass" id="repass"
+                placeholder="Repite tu password" required />
+            </div>
+            <div class="form-check d-flex">
+              <input [(ngModel)]="formTerminos" type="checkbox" name="terminos" class="form-check-input" value=""
+                id="flexCheckDefault" required />
+              <label class="ps-2 form-check-label" for="flexCheckDefault">Acepto las <a href="assets/marca/Terminos%20y%20condicione%20IUmach.pdf" target="_blank"
+                  class="term-service">condiciones del servicio</a></label>
+            </div>
+            <div class="form-group form-button">
+              <button name="signup" id="signup" class="form-submit" value="Registrar">Crear cuenta!</button>
+            </div>
+
+
+          </form>
+        </div>
+        <div class="signup-image">
+          <figure><img src="/assets/images/Register.svg" alt="sing up image"></figure>
+          <a [routerLink]="['/login']" class="signup-image-link">Ya tengo una cuenta</a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+</div>

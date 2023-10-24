@@ -1,0 +1,56 @@
+<div class="container contenedor-busqueda border border-2 rounded p-3">
+  <form class="row g-3" (ngSubmit)="buscarGrupos()" [formGroup]="forms">
+
+    <div class="col-md-6 center">
+      <div class="form-check">
+        <label class="form-check-label texto-check-busqueda" for="flexRadioDefault1">Grupo de carrera</label>
+        <input class="form-check-input" [(ngModel)]="seleccionadosTipo" [value]="false" type="radio"
+               formControlName="tipo" id="flexRadioDefault1">
+      </div>
+    </div>
+    <div class="col-md-6 center">
+      <div class="form-check">
+        <label class="form-check-label texto-check-busqueda" for="flexRadioDefault2">Grupo de estudio</label>
+        <input class="form-check-input" [(ngModel)]="seleccionadosTipo" [value]="true" type="radio"
+               formControlName="tipo" id="flexRadioDefault2">
+      </div>
+    </div>
+
+
+    <div class="col-md-6" *ngIf="seleccionadosTipo===false">
+      <label for="validationDefault01" class="form-label texto-check-busqueda">Carrera:</label>
+      <select formControlName="carrera" [(ngModel)]="seleccionadosCarrera" class="form-select" id="validationDefault01"
+              required
+              (ngModelChange)="cargarMaterias()">
+        <option selected disabled value="">Carrera...</option>
+        <option value="TODO">TODO</option>
+        <option [ngValue]="car.id" *ngFor="let car of carreras">{{car.nombre}}</option>
+      </select>
+    </div>
+    <div class="col-md-6" *ngIf="seleccionadosTipo===false">
+      <label for="validationDefault03" class="form-label texto-check-busqueda">Materia:</label>
+      <select formControlName="materia" class="form-select" id="validationDefault03" required>
+        <option selected disabled value="">Materia...</option>
+        <option value="TODO">TODO</option>
+        <option [ngValue]="mat.id" *ngFor="let mat of materias">{{mat.nombre}}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="validationDefault04" class="form-label texto-check-busqueda">Turno:</label>
+      <select formControlName="turno" class="form-select" id="validationDefault04" required>
+        <option selected disabled value="">Turno...</option>
+        <option value="TODO">TODO</option>
+        <option>MAÑANA</option>
+        <option>TARDE</option>
+        <option>NOCHE</option>
+      </select></div>
+    <div class="col-md-6">
+      <label for="validationDefault05" class="form-label texto-check-busqueda">Nombre del Grupo:</label>
+      <input formControlName="nombreGrupo" type="text" class="form-control" id="validationDefault05" required>
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-buscar" type="submit">Buscar</button>
+    </div>
+  </form>
+</div>

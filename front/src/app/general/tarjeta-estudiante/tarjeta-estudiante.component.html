@@ -1,0 +1,127 @@
+<div class="row my-2">
+  <div class="card rounded-3 col-9  p-3 mb-5  rounded">
+    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+      <div class="img-fixed rounded-3 my-4 row align-items-center gx-0">
+        <img *ngIf="!imageProfile" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" class="img-fluid col img-size" alt="" />
+        <img *ngIf="imageProfile" src="{{imageProfile}}" class="img-fluid col img-size" alt="" />
+      </div>
+      <a href="#">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);"></div>
+      </a>
+    </div>
+    <div class="card-body rounded-3 ">
+      <h5 class="card-title font-weight-bold text-truncate"
+        [ngxTippy]="templateNombre" [tippyProps]="{
+          arrow: false,
+          allowHTML: true,
+          placement: 'top'
+        }">
+        <a>{{dataEntrante.firstName}} {{dataEntrante.lastName}}</a>
+      </h5>
+      <template #templateNombre>
+        <span class="test">{{dataEntrante.firstName}} {{dataEntrante.lastName}}</span>
+    </template>
+      <hr>
+      <h6>Coincidencia:</h6>
+      <div class="h-auto width-settings">
+        <circle-progress
+        [percent]="dataEntrante.coincidencia"
+        [radius]="50"
+        [outerStrokeWidth]="5"   [innerStrokeWidth]="8"
+        [outerStrokeColor]="getFirstColor(dataEntrante.coincidencia)"
+        [innerStrokeColor]="getSecondColor(dataEntrante.coincidencia)"
+        [animation]="true"  [responsive]="true"   [animationDuration]="300"
+        [backgroundPadding]="0"
+        [showSubtitle]="false"
+        [titleFontSize]="'15'"   [unitsFontSize]="'15'"
+        [titleColor]="'#150d4b'" [unitsColor]="'#150d4b'"
+        [animationDuration]="0"
+        ></circle-progress>
+      </div>
+      <hr>
+      <div class="row gx-3 mb-3 w-90 tags-container" #containerTags>
+        <div *ngIf="dataEntrante.tags.length == 0" class="col-auto tags invisible">Sin tags</div>
+        <div *ngIf="checkOverflow(containerTags)" class="col-auto show-more">
+          <i class="fa-solid fa-angle-down" (click)="showMore(containerTags)"></i>
+        </div>
+        <div *ngIf="!checkOverflow(containerTags)" class="col-auto show-more">
+          <i *ngIf="dataEntrante.tags.length != 0" class="fa-solid fa-angle-up" (click)="showLess(containerTags)"></i>
+        </div>
+        <div  class="col-auto tags" *ngFor="let tag of dataEntrante.tags ">
+            {{tag}}
+        </div>
+      </div>
+      <hr>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-ingresar btn-sm col" (click)="invitarEstudiante($event.target, dataEntrante.idEstudiante)">Invitar</button>
+      </div>
+    </div>
+  </div>
+  <div class="m-0 p-0 col-3">
+    <div class="col-2 rounded-end my-3 label h-auto w-75 text-center selecionado" (click)="openPopup(dataEntrante.idEstudiante)">
+      <i class="fa-solid fa-eye p-1"></i>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="msgSolicitud">
+  <app-success [sucess]="'Solicitud enviada'" (click)="close()"></app-success>
+</div>
+
+<div *ngIf="error">
+  <app-error [error]="'Ya envió solicitud a este usuario. Espere a que la evalúe'" (click)="close()"></app-error>
+</div>
+<!-- Modal -->
+<div class="modal d-block modal-hide " tabindex="-1" role="dialog" id="{{dataEntrante.idEstudiante}}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{dataEntrante.firstName}} {{dataEntrante.lastName}}</h4>
+        <button type="button" class="btn btn-danger" (click)="closePopup(dataEntrante.idEstudiante)">X</button>
+      </div>
+      <div class="modal-body d-flex justify-content-center row">
+        <img *ngIf="!imageProfile" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" class="img-fluid my-3 rounded-3" alt="" />
+        <img *ngIf="imageProfile" src="{{imageProfile}}" class="img-fluid my-3 rounded-3 " alt="" />
+        <div class="col-10 rounded-custom my-1 label h-auto text-light p-1">
+          <i class="fa-solid fa-user-group p-1"></i><b>Edad: </b>{{calculateAge()}} años
+        </div>
+        <div class="col-10 rounded-custom my-1 label h-auto text-light p-1">
+          <i class="fa-solid fa-user-group p-1"></i><b>Teléfono: </b>{{dataEntrante.phone}}
+        </div>
+        <div class="col-10 rounded-custom my-1 label h-auto text-light p-1">
+          <i class="fa-solid fa-user-group p-1"></i><b>E-mail: </b>{{dataEntrante.email}}
+        </div>
+        <div class="col-10 rounded-custom my-1 label h-auto text-light p-1">
+          <i class="fa-solid fa-building-columns p-1"></i><b>Carreras en curso: </b>
+          <div class="ms-1" *ngFor="let carrera of dataEntrante.carreras ">
+            - {{carrera}}
+          </div>
+        </div>
+        <div class="col-10 rounded-custom my-1 label h-auto text-light p-1">
+          <i class="fa-solid fa-building-columns p-1"></i><b>Materias en curso: </b>
+          <div class="ms-1" *ngFor="let materia of dataEntrante.materias">
+            - {{materia}}
+          </div>
+        </div>
+        <div class="col-10 rounded-custom my-1 label h-auto text-light p-1">
+          <i class="fa-solid fa-building-columns p-1"></i><b>Intereses: </b>
+          <div class="ms-1" *ngFor="let tag of dataEntrante.tags">
+            - {{tag}}
+          </div>
+        </div>
+        <div class="col-10 rounded-custom my-1 label h-auto text-light p-1">
+          <i class="fa-solid fa-medal p-1"></i><b>Recompensas: </b>
+          <div class="d-inline-block">
+            <app-recompenzas [user]="userRecompenza"></app-recompenzas>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-ingresar btn-sm col" (click)="invitarEstudiante($event.target, dataEntrante.idEstudiante)">Invitar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

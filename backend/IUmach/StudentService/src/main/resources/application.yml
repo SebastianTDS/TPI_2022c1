@@ -1,0 +1,22 @@
+server:
+  port: 8085
+  
+spring:
+  application:
+    name: StudentService
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://database1.clxprdqhqk07.us-east-1.rds.amazonaws.com:3306/student
+    username: ${SERVICE_USER}
+    password: ${SERVICE_PASSWORD}
+com:
+  studentService:
+    configToken:
+      identityPoolUrl: ${COGNITO-POOL}
+      jwkUrl: ${COGNITO-JWT}
+      readTimeout: 2000
+      connectionTimeout: 2000

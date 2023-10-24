@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nombreGrupo":  "Grupo de estudio",
+    "personaAValorar": "Marcelo",
+    "personaQueValora": "Juan",
+    "fecha": "2022-03-22T18:25:43.511Z"
+  },
+  {
+    "id": 2,
+    "nombreGrupo":  "Los 4 genios",
+    "personaAValorar": "Ivan",
+    "personaQueValora": "Juan",
+    "fecha": "2022-03-19T18:25:43.511Z"
+  },
+  {
+    "id": 3,
+    "nombreGrupo":  "Grupo de estudio",
+    "personaAValorar": "Gonzalo",
+    "personaQueValora": "Juan",
+    "fecha": "2022-02-22T18:25:43.511Z"
+  }
+]

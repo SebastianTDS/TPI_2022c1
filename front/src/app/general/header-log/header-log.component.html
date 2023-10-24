@@ -1,0 +1,52 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg pb-0 pt-0">
+    <div class="container-fluid">
+
+      <a class="navbar-brand logo d-flex align-items-center" [routerLink]="['/','home']">
+        <img src="assets/marca/LogotipoV3.png" height="30" class="align-text-center" alt="">
+      </a>
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+          <a [routerLink]="['/','home']" class="nav-item nav-link active rounded-top opcion-menu ">Home</a>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle rounded-top opcion-menu" data-bs-toggle="dropdown">Perfil
+              <i class="fa-solid fa-bell campana mx-2" *ngIf="notification !=0|| valoration!=0"></i></a>
+            <div class="dropdown-menu">
+              <a [routerLink]="['/','perfil','notificaciones']" class="dropdown-item opcion-menu">Notificaciones <i
+                class="fa-solid fa-bell campana mx-2" *ngIf="notification!=0"> {{notification}}</i></a>
+              <a [routerLink]="['/','perfil','valoraciones']" class="dropdown-item opcion-menu">Valoraciones  <i
+                class="fa-solid fa-bell campana mx-3" *ngIf="valoration!=0"> {{valoration}}</i></a>
+              <a [routerLink]="['/','perfil']" class="dropdown-item opcion-menu">Perfil</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle rounded-top opcion-menu" data-bs-toggle="dropdown">Grupo</a>
+            <div class="dropdown-menu">
+              <a [routerLink]="['/','home','mis-grupos']" class="dropdown-item opcion-menu">Mis grupos</a>
+              <a [routerLink]="['/','home','buscar-grupos']" class="dropdown-item opcion-menu">Buscar
+                grupos</a>
+              <a [routerLink]="['/','home','crear-grupo']" class="dropdown-item opcion-menu">Crear grupo</a>
+            </div>
+          </div>
+          <a [routerLink]="['/','home','tools','forum']" class="nav-item nav-link rounded-top opcion-menu">General</a>
+        </div>
+        <div class="navbar-nav">
+          <a class="navbar-brand d-flex align-items-center" [routerLink]="['/','perfil']">
+            <img *ngIf="image==null"
+                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                 alt="" class="d-inline-block redondear">
+            <img *ngIf="image!=null" src="{{image}}" alt="" class="d-inline-block redondear">
+
+            <span class="ms-2 mb-1">{{firstName}} {{lastName}}</span>
+          </a>
+          <a href="" (click)="onLogOut()" class="nav-item nav-link rounded-top opcion-menu"><i
+            class="fa-solid fa-right-from-bracket"></i> Salir</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+

@@ -1,0 +1,29 @@
+.center{
+  display: flex;
+  align-items: center;
+}
+
+.btn-buscar{
+  background: #FBFBFD !important;
+  border: 3px solid var(--color3);
+  color: var(--color3);
+}
+
+.btn-buscar:hover{
+  background: var(--color3);
+  border: 3px solid var(--color3);
+  color: var(--color6);
+}
+
+.texto-check-busqueda{
+  color: var(--color1);
+}
+
+.form-control:focus, .form-select:focus{
+  box-shadow: none;
+  border:3px solid var(--color3);
+}
+
+.contenedor-busqueda {
+  background: #FBFBFD;
+}

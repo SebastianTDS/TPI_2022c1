@@ -1,0 +1,73 @@
+.table-archivos{
+  color: var(--color1);
+}
+
+.bg-table{
+  background-color: var(--color1);
+  color: var(--color6);
+}
+.curved-div{
+  background-color: var(--color3);
+  width: 100%;
+  height: 60px;
+}
+
+.curve{
+  height: 100px;
+  fill: var(--color3);
+}
+
+.card-menu {
+  background-color: #FBFBFD;
+  margin-bottom: 2em;
+}
+
+.curve svg{
+  filter: drop-shadow(3px 5px 2px #2a1f7086);
+}
+
+.full-size{
+  width: 100%;
+  height: 100%;
+}
+
+.btn-submit:hover{
+  background: var(--color6);
+  border: 1px solid var(--color2);
+  color: var(--color2);
+}
+
+.btn-submit{
+  background: var(--color2);
+  border: 1px solid var(--color2);
+  color: var(--color6);
+}
+
+.form-control:focus, .form-select:focus{
+  box-shadow: none;
+  border:3px solid var(--color3);
+}
+
+.table-archivos{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px !important;
+}
+
+
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  border-radius: 35px;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+}

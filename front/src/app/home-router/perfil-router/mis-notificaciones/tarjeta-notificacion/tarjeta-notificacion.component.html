@@ -1,0 +1,86 @@
+<app-loading *ngIf="loading"></app-loading>
+<div *ngIf="error">
+  <app-error [error]="error" (click)="close()"></app-error>
+</div>
+
+<div *ngIf="success">
+  <app-success [sucess]="success" (click)="close()"></app-success>
+</div>
+<div class="alert alert-notif d-flex align-items-center justify-content-between alert-dismissible fade show row sombra"
+     role="alert">
+  <div class="my-2 mt-3 mt-lg-0 col-2 col-sm-1	col-md-1	col-lg-1	col-xl-1	col-xxl-1">
+    <span *ngIf="data.tipoNotification==='MENSAJE'" class="text-start"><i class="fa-solid fa-message fa-2xl"></i></span>
+    <span *ngIf="data.tipoNotification==='ARCHIVO'" class="text-start"><i class="fa-solid fa-file-circle-plus fa-2xl d-flex align-content-center"></i></span>
+    <span *ngIf="data.tipoNotification==='SALIR'" class="text-start"><i class="fa-solid fa-right-from-bracket fa-2xl"></i></span>
+    <span *ngIf="data.tipoNotification==='UNION'" class="text-start"><i class="fa-solid fa-right-to-bracket fa-2xl"></i></span>
+    <span *ngIf="data.tipoNotification==='SOLICITUD'" class="text-start"><i class="fa-solid fa-circle-exclamation fa-2xl"></i></span>
+    <span *ngIf="data.tipoNotification==='INVITACION'" class="text-start"><i class="fa-solid fa-circle-exclamation fa-2xl"></i></span>
+    <span *ngIf="data.tipoNotification==='CIERRE'" class="text-start"><i class="fa-solid fa-store-slash fa-2xl"></i></span>
+    <span *ngIf="data.tipoNotification==='VOTACION'" class="text-start"><i class="fa-solid fa-person-circle-minus fa-2xl"></i></span>
+    <span *ngIf="data.tipoNotification==='EXPULSION'" class="text-start"><i class="fa-solid fa-ban fa-2xl"></i></span>
+    <span *ngIf="data.tipoNotification==='RECORDATORIO'" class="text-start"><i class="fa-solid fa-calendar-day fa-2xl"></i></span>
+  </div>
+
+  <div class="my-2 col-12 mt-3 mt-lg-0 col-sm-12	col-md-5	col-lg-5	col-xl-3	col-xxl-3">
+    <small class="text-start">{{data.dateAt| date:'dd/MM/yyyy h:mm:ss a'}}</small>
+  </div>
+
+  <div class=" my-2 col-12 col-sm-12	col-md-6	col-lg-6	col-xl-4	col-xxl-4">
+    <app-img-student-notification [notificationImg]="data.idStudent"></app-img-student-notification>
+    <span class="fw-bold"> {{data.nameNotificante}}</span>
+
+    <span *ngIf="data.tipoNotification==='MENSAJE'" class="text-start"> ha enviado un mensaje al foro del </span>
+    <span *ngIf="data.tipoNotification==='ARCHIVO'" class="text-start"> ha subido un archivo al repositorio del </span>
+    <span *ngIf="data.tipoNotification==='SALIR'" class="text-start"> ha salido del </span>
+    <span *ngIf="data.tipoNotification==='UNION'" class="text-start"> se ha unido al </span>
+    <span *ngIf="data.tipoNotification==='VOTACION'" class="text-start"> ha sido considerado para ser vetado del </span>
+    <span *ngIf="data.tipoNotification==='RECORDATORIO'" class="text-start"> ha creado un evento en el </span>
+    <span *ngIf="data.tipoNotification==='EXPULSION'" class="text-start">
+      <span *ngIf="!data.idStudent == data.idStudentNotification"> ha</span>
+      <span *ngIf="data.idStudent == data.idStudentNotification"> has</span>
+       sido expulsado del
+    </span>
+    <span *ngIf="data.tipoNotification==='SOLICITUD'" class="text-start"> ha solicitado  unirse al </span>
+    <span *ngIf="data.tipoNotification==='INVITACION'" class="text-start"> te ha invitado a unirte al </span>
+    <span *ngIf="data.tipoNotification==='CIERRE'" class="text-start"> ha cerrado el grupo {{data.nameGroup}}</span>
+    <span *ngIf="data.tipoNotification!='CIERRE'">grupo <a
+      [routerLink]="['/','home','g',data.idGroup]">{{data.nameGroup}}</a></span>
+  </div>
+
+  <div class="my-2 d-flex justify-content-center col-12 col-sm-12	col-md-12	col-lg-12	col-xl-4	col-xxl-4">
+    <button *ngIf="data.tipoNotification==='VOTACION'" class=" btn btn-aceptar  justify-content-end ms-5"
+        (click)="aceptarVeto(data.idGroup, data.idStudent)" data-bs-dismiss="alert" aria-label="Close">
+    Aceptar
+    </button>
+    <button *ngIf="data.tipoNotification==='VOTACION'" class=" btn btn-rechazar  justify-content-end ms-5"
+        (click)="rechazarVeto(data.idGroup, data.idStudent)" data-bs-dismiss="alert" aria-label="Close">
+    Rechazar
+    </button>
+    <button *ngIf="data.tipoNotification==='SOLICITUD'" class=" btn btn-aceptar  justify-content-end ms-5"
+            (click)="aceptarSolicitud(data.idGroup, data.idStudent)" data-bs-dismiss="alert" aria-label="Close">
+      Aceptar
+    </button>
+    <button *ngIf="data.tipoNotification==='SOLICITUD'" class=" btn btn-rechazar  justify-content-end ms-5"
+            (click)="rechazarSolicitud(data.idGroup, data.idStudent)" data-bs-dismiss="alert" aria-label="Close">
+      Rechazar
+    </button>
+    <button *ngIf="data.tipoNotification==='INVITACION'" class=" btn btn-aceptar  justify-content-end ms-5"
+            (click)="aceptarSolicitud(data.idGroup, data.idStudentNotification)" data-bs-dismiss="alert"
+            aria-label="Close">
+      Aceptar
+    </button>
+    <button *ngIf="data.tipoNotification==='INVITACION'" class=" btn btn-rechazar  justify-content-end ms-5"
+            (click)="rechazarSolicitud(data.idGroup, data.idStudentNotification)" data-bs-dismiss="alert"
+            aria-label="Close">
+      Rechazar
+    </button>
+  </div>
+  <div>
+    <button *ngIf="!(data.tipoNotification==='SOLICITUD'||data.tipoNotification==='INVITACION')" type="button"
+            class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+            (click)="borrarNotificacion()"></button>
+  </div>
+
+
+</div>
+

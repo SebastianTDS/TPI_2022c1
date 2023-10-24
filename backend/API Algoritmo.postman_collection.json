@@ -1,0 +1,938 @@
+{
+	"info": {
+		"_postman_id": "d6925149-a292-4ec5-97ce-297625f5ce0c",
+		"name": "API Algoritmo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14966927"
+	},
+	"item": [
+		{
+			"name": "Combos",
+			"item": [
+				{
+					"name": "Ver facultades",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Endpoint alcanzado\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Formato del response JSON\", function () {",
+									"    let jsonData = pm.response.json();",
+									"",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.expect(jsonData[0]).to.have.keys('id', 'abr', 'name')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/algorithm/graph/facultades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"graph",
+								"facultades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver departamentos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Endpoint alcanzado\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Formato del response JSON\", function () {",
+									"    let jsonData = pm.response.json();",
+									"",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.expect(jsonData[0]).to.have.keys('id', 'name');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/algorithm/graph/{{Facultad}}/departamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"graph",
+								"{{Facultad}}",
+								"departamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver carreras",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Endpoint alcanzado\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Formato del response JSON\", function () {",
+									"    let jsonData = pm.response.json();",
+									"",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.expect(jsonData[0]).to.have.keys('id', 'name');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/algorithm/graph/{{Facultad}}/{{Departamento}}/carreras",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"graph",
+								"{{Facultad}}",
+								"{{Departamento}}",
+								"carreras"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver materias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Endpoint alcanzado\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Formato del response JSON\", function () {",
+									"    let jsonData = pm.response.json();",
+									"",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.expect(jsonData[0]).to.have.keys('id','codigo', 'title');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/algorithm/graph/{{Facultad}}/{{Departamento}}/{{Carrera}}/materias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"graph",
+								"{{Facultad}}",
+								"{{Departamento}}",
+								"{{Carrera}}",
+								"materias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/algorithm/graph/tags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"graph",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver turnos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/algorithm/graph/{{Facultad}}/2619/turnos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"graph",
+								"{{Facultad}}",
+								"2619",
+								"turnos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Información de Estudiantes",
+			"item": [
+				{
+					"name": "Cargar Estudiante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"a431asd-agg121f-asd-13ra\",\n    \"puntos\":0,\n    \"idFacultad\":6\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/user/cargar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"user",
+								"cargar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver estudiante",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-USER-INNER",
+								"value": "eddc430d-14b7-4141-af53-e73cfb089197",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8761/algorithm/user/eddc430d-14b7-4141-af53-e73cfb089197",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"user",
+								"eddc430d-14b7-4141-af53-e73cfb089197"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Anotar a carrera",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-USER-INNER",
+								"value": "test4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":102,\n    \"idFacultad\":6,\n    \"idCarrera\":4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/user/anotar-carrera",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"user",
+								"anotar-carrera"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Abandonar carrera",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-USER-INNER",
+								"value": "test1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idCarrera\":3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/user/abandonar-carrera",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"user",
+								"abandonar-carrera"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Anotar a materia",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-USER-INNER",
+								"value": "eddc430d-14b7-4141-af53-e73cfb089197",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idFacultad\": 6,\n    \"idCarrera\": 3,\n    \"idMateria\": 2622,\n    \"turno\": \"Tarde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/user/anotar-materia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"user",
+								"anotar-materia"
+							],
+							"query": [
+								{
+									"key": "X-USER-INNER",
+									"value": "test1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Abandonar materia",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":102,\n    \"idMateria\":2619\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/user/abandonar-materia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"user",
+								"abandonar-materia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar Interes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJDM1JIZmNJRXRxN2NVWko4R0dHNlRsNE9NMHBCanZHcVg4a28xZjlZVHBRPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJlZGRjNDMwZC0xNGI3LTQxNDEtYWY1My1lNzNjZmIwODkxOTciLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9RbExQbnNiTGYiLCJjbGllbnRfaWQiOiI0YjhzbG82NWgwOWo4ZWlyZnY3b2R1dW5wNCIsIm9yaWdpbl9qdGkiOiI5NGEwZjhlMS1hYTE2LTRkNmEtOTdhYi0xNzZkYTU2NGY1OTYiLCJldmVudF9pZCI6IjRkMDczNGIxLWIwOTAtNDdlNi05NTAwLTAxNzJiYjYyMjI2MyIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2NTM5NjQwMTEsImV4cCI6MTY1Mzk2NzYxMSwiaWF0IjoxNjUzOTY0MDExLCJqdGkiOiI2YmU2NGVjZC04OGVlLTQ3MGUtOGM5NS1lZDQzN2ViMTAzNjQiLCJ1c2VybmFtZSI6ImVkZGM0MzBkLTE0YjctNDE0MS1hZjUzLWU3M2NmYjA4OTE5NyJ9.rT1Dw0hZYVPGROZoV_j6-bgdjHnbcbFTO5IyywXu9AerI09ftMAfN-SgUOJGM_XigqAho9n3dWib_0PFPNGCs2hTSC6imm0MnodYAS3no4uqeCA_XtXGCLQgRLANnRrGhmVTmXmfHhma7DoTrjG05ZiiznZG5H0RPcCF1e_MoiIWnggvF2tiGN8Fcv8tSaJAMLjlNZdMfdB8IIUpuYFms-HB4oqMWplW5xH46ryBjwBh-RJ4Kz_QzgsvikUErAkZKGQ3AMT_3iVwRIxXruSHMnRmBZq5vOt2kzqjWkQmrPkCymrDys4xjUGzjTqiu-HbRNk5tZ_1VCD9vOdbdxpn6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-USER-INNER",
+								"value": "test2",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idInteres\":54\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/user/cargar-interes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"user",
+								"cargar-interes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar interes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJDM1JIZmNJRXRxN2NVWko4R0dHNlRsNE9NMHBCanZHcVg4a28xZjlZVHBRPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJlZGRjNDMwZC0xNGI3LTQxNDEtYWY1My1lNzNjZmIwODkxOTciLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9RbExQbnNiTGYiLCJjbGllbnRfaWQiOiI0YjhzbG82NWgwOWo4ZWlyZnY3b2R1dW5wNCIsIm9yaWdpbl9qdGkiOiI2Yjg5MjlhOS0xNDUxLTRmZDMtOTBiYi02ZmM3ZTlmODc4MDAiLCJldmVudF9pZCI6IjU4Y2RhYTIyLWY0MDMtNDc2OS1hOGE4LWYyM2VlYzhjNzg5YSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2NTQwMTUzODIsImV4cCI6MTY1NDAxODk4MiwiaWF0IjoxNjU0MDE1MzgyLCJqdGkiOiJjZTViNDliZC03M2YzLTRjZDEtOTE4NC04M2U2NzczNDY0MzciLCJ1c2VybmFtZSI6ImVkZGM0MzBkLTE0YjctNDE0MS1hZjUzLWU3M2NmYjA4OTE5NyJ9.dQGJ4RawWak3FEAYIOKkNRkF7NtDriTLsJq76tQF62PcmNn2gTVxLwqXnSSGiudF6-7Ao_GuTHr28oKWUXLgq4-DwzBPKapqOh8Zgkxk2FiNxz7O0GUmanL842X1m19Y0zA6SzfOLYfbh97_Hwd30oVmWSLM8sU_pzIky2aFRStwzUYaGCmATxBfvKcperRHPaCA2ym_PRdXGxKf3H27RRG8xBXbLOVo3Z5qepsLK-SOt9iDeLmQFQbh9Md3S07KUssMhrhdb7obaouHupHgvD6BUHUWK8IdoVKsoWS7SQmQLPgOQNwgxdLtAavyha3YeD6K--WBZVJJdNASL-ce3g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-USER-INNER",
+								"value": "eddc430d-14b7-4141-af53-e73cfb089197",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idInteres\":42\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/user/borrar-interes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"user",
+								"borrar-interes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sumar puntos a Estudiante",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJraWQiOiJDM1JIZmNJRXRxN2NVWko4R0dHNlRsNE9NMHBCanZHcVg4a28xZjlZVHBRPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJlZGRjNDMwZC0xNGI3LTQxNDEtYWY1My1lNzNjZmIwODkxOTciLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9RbExQbnNiTGYiLCJjbGllbnRfaWQiOiI0YjhzbG82NWgwOWo4ZWlyZnY3b2R1dW5wNCIsIm9yaWdpbl9qdGkiOiIwY2M0Y2Q4OS1jMmU3LTRjYzUtYWQxZS00OGRiMjFhYTU4MzgiLCJldmVudF9pZCI6IjYxNjY1NDA0LTc5NTEtNDFhNi04NmZhLTU2YmFiY2JjNmI0YyIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2NTM3ODc3NDAsImV4cCI6MTY1Mzc5MTM0MCwiaWF0IjoxNjUzNzg3NzQwLCJqdGkiOiI5N2MxMDE4Zi0zOGRiLTQwNGQtOWE4ZS1lMTM1Yzc3NDgzNzAiLCJ1c2VybmFtZSI6ImVkZGM0MzBkLTE0YjctNDE0MS1hZjUzLWU3M2NmYjA4OTE5NyJ9.WMdldh1xuslWx2Ni8ZhCQlhP0zfVPehgG9iYZKsIKn_O7onQVUJdyEcQA7SzcmxQFtRz2mpHMV91GAcY_Sq7L3KOI0Ow3EDq49RSp-1qbZ03E_WdB6fn4UqlfuGIwGSER2fiwaRFW8lxgC7WY0Hv-1aGcLPJGj7MEV0l9LPFFzedQO5hljY3B_YkQFKECBNsP1GUgqqUzYdQYWMW0eOr4ogGNOP14ThsJj0C9fa3UrEdobSbjkgutrnVfRCFbTt9mOH5ltT0BrNMuDSkmHdF7dmOkL2fUxRgsstGgUOxOe6nv_fgzfcGFVR7QvHSNtU40QWxO3ZlVE80g4k51cuNww",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":102,\n    \"puntos\":20\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/student/get-user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"student",
+								"get-user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJraWQiOiJDM1JIZmNJRXRxN2NVWko4R0dHNlRsNE9NMHBCanZHcVg4a28xZjlZVHBRPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJlZGRjNDMwZC0xNGI3LTQxNDEtYWY1My1lNzNjZmIwODkxOTciLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9RbExQbnNiTGYiLCJjbGllbnRfaWQiOiI0YjhzbG82NWgwOWo4ZWlyZnY3b2R1dW5wNCIsIm9yaWdpbl9qdGkiOiIzZWFlZTc0OS0xZDNkLTQwODktOWZjMS01YjhkYzcxYTc4ODQiLCJldmVudF9pZCI6ImM5Yzk3MTAyLWQyN2QtNDBiOS04ZWY2LTU0YWMyZmU5MTYxZCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2NTM4NjQyNDQsImV4cCI6MTY1Mzg2Nzg0NCwiaWF0IjoxNjUzODY0MjQ0LCJqdGkiOiI1YTI5ZTJjOS1lNDdiLTQyNzgtODgyMi03MDEyODA1Nzc4NmYiLCJ1c2VybmFtZSI6ImVkZGM0MzBkLTE0YjctNDE0MS1hZjUzLWU3M2NmYjA4OTE5NyJ9.OAc1UiwPkpq8VVkyAgUN1OetbdPdlOotHhLAHjoS75qKxfNIgNMuR67z46zP45mPCiMqb3mrbVTnvUxTKKdGcHAO8YqBP2CQfRmGI_rKaA5Z3QH4BXuNL6CJd70V5Co-EA3X6vdmw76SNwLQOJRx1Au8tsmhzbHJn5TLbW-UU_MIbNeitRbavCs0sQCkKhHYS8SUZkbD-0BuArOwht-re0BtdSZZaG8M5FfTl8SNOMB2ItRGzSjoG5wuXeXy4N9mJhjfPbGuCuy_ElFbdxgGQLFnNMZW74Vu47hYAavL5iaUkxGVyST65I-tpJJ2kXVELNjywHpCv7BO7FvRXsmJMA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Información de Grupos",
+			"item": [
+				{
+					"name": "Cargar Grupo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idGrupo\":60,\n    \"idAdmin\":102\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/group/cargar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"group",
+								"cargar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar interes a Grupo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idGrupo\":40,\n    \"idAdmin\":122,\n    \"idInteres\":44\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/group/agregar-interes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"group",
+								"agregar-interes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar interes a Grupo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idGrupo\":40,\n    \"idAdmin\":102,\n    \"idInteres\":44\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/group/borrar-interes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"group",
+								"borrar-interes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver grupo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-USER-INNER",
+								"value": "test1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8761/algorithm/group/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"group",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar nuevo miembro",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idGrupo\":20,\n    \"idMiembro\":\"eddc430d-14b7-4141-af53-e73cfb089197\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/group/agregar-miembro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"group",
+								"agregar-miembro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Grupo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-USER-INNER",
+								"value": "a4ae54b2-2ad3-4ebe-8b49-4f92ad805524",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idGrupo\":1,\n    \"idAdmin\":102\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/group/borrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"group",
+								"borrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-USER-INNER",
+								"value": "a4ae54b2-2ad3-4ebe-8b49-4f92ad805524",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idGrupo\":3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8761/algorithm/group/remover-miembro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"group",
+								"remover-miembro"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJraWQiOiJDM1JIZmNJRXRxN2NVWko4R0dHNlRsNE9NMHBCanZHcVg4a28xZjlZVHBRPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJlZGRjNDMwZC0xNGI3LTQxNDEtYWY1My1lNzNjZmIwODkxOTciLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9RbExQbnNiTGYiLCJjbGllbnRfaWQiOiI0YjhzbG82NWgwOWo4ZWlyZnY3b2R1dW5wNCIsIm9yaWdpbl9qdGkiOiIzZWFlZTc0OS0xZDNkLTQwODktOWZjMS01YjhkYzcxYTc4ODQiLCJldmVudF9pZCI6ImM5Yzk3MTAyLWQyN2QtNDBiOS04ZWY2LTU0YWMyZmU5MTYxZCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE2NTM4NjQyNDQsImV4cCI6MTY1Mzg2Nzg0NCwiaWF0IjoxNjUzODY0MjQ0LCJqdGkiOiI1YTI5ZTJjOS1lNDdiLTQyNzgtODgyMi03MDEyODA1Nzc4NmYiLCJ1c2VybmFtZSI6ImVkZGM0MzBkLTE0YjctNDE0MS1hZjUzLWU3M2NmYjA4OTE5NyJ9.OAc1UiwPkpq8VVkyAgUN1OetbdPdlOotHhLAHjoS75qKxfNIgNMuR67z46zP45mPCiMqb3mrbVTnvUxTKKdGcHAO8YqBP2CQfRmGI_rKaA5Z3QH4BXuNL6CJd70V5Co-EA3X6vdmw76SNwLQOJRx1Au8tsmhzbHJn5TLbW-UU_MIbNeitRbavCs0sQCkKhHYS8SUZkbD-0BuArOwht-re0BtdSZZaG8M5FfTl8SNOMB2ItRGzSjoG5wuXeXy4N9mJhjfPbGuCuy_ElFbdxgGQLFnNMZW74Vu47hYAavL5iaUkxGVyST65I-tpJJ2kXVELNjywHpCv7BO7FvRXsmJMA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Algoritmo",
+			"item": [
+				{
+					"name": "Buscar mejores grupos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/algorithm/buscar-grupos?user=1be8de3c-6622-46d9-8e87-678a2c3f44dc&pagina=0&materia=&tag=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"algorithm",
+								"buscar-grupos"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "1be8de3c-6622-46d9-8e87-678a2c3f44dc"
+								},
+								{
+									"key": "pagina",
+									"value": "0"
+								},
+								{
+									"key": "materia",
+									"value": ""
+								},
+								{
+									"key": "tag",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Facultad",
+			"value": "UNLAM",
+			"type": "string"
+		},
+		{
+			"key": "Departamento",
+			"value": "5",
+			"type": "string"
+		},
+		{
+			"key": "Carrera",
+			"value": "3",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,48 @@
+.redondear {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.rounded-top{
+  border-radius: 15px 15px 0 0 !important;
+}
+
+.opcion-menu:hover{
+  background: var(--color3);
+  color: var(--color6) !important;
+}
+
+.opcion-menu{
+  padding-bottom: 14px !important;
+  padding-top: 14px !important;
+}
+
+.logo{
+  border-right:2px solid var(--color3);
+  padding-right: 10px !important;
+}
+
+
+@media only screen and (max-width: 991px) {
+  .logo{
+    border: none;
+    padding-right: 10px !important;
+  }
+}
+
+.bg{
+  background-color: var(--fondo);
+}
+.texto{
+  color: var(--texto);
+}
+.campana{
+  color: var(--color1);
+}
+.notification{
+  padding: 10px;
+  border-radius: 50% !important;
+  background-color: var(--color1);
+  color: white;
+}

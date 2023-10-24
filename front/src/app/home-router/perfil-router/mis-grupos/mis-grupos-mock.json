@@ -1,0 +1,30 @@
+[
+  {
+    "id": 10001,
+    "nombre": "Grupo Dinamita",
+    "imagen": "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d29yayUyMHRhYmxlfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+    "descripcion": "Practicas de laboratorio 1 equipo para trabajar responsablmente en los horaios que se pueda desarrollar",
+    "cerrado": true,
+    "cantMax": 10,
+    "cantMiem": 4,
+    "turno": "Mañana",
+    "carrera": "Taller Práctico Integrador",
+    "materia": "WEB 1",
+    "isMateria": true,
+    "valoracion": 5
+  },
+  {
+    "id": 10002,
+    "nombre": "Grupo Meteorito",
+    "imagen": "https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg",
+    "descripcion": "Practicas de laboratorio 1 equipo para trabajar responsablmente en los horaios que se pueda desarrollar",
+    "cerrado": true,
+    "cantMax": 5,
+    "cantMiem": 2,
+    "turno": "Tarde",
+    "carrera": "Programación Básica I",
+    "materia": "WEB 1",
+    "isMateria": true,
+    "valoracion": 4
+  }
+]

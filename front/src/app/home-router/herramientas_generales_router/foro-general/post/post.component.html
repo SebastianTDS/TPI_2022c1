@@ -1,0 +1,113 @@
+<div class="texto-base">
+  <div class="forum-block container-md container-fluid gx-0">
+    <div class="row pe-3">
+      <div class=" col-1 col-sm-2 c  forum-side d-flex justify-content-center align-items-center">
+
+        <div class="text-center ">
+          <div class="mb-3" (click)="desplegarPost()">
+            <i *ngIf="!desplegado" class="fa-solid  fa-eye d-block"></i>
+            <i *ngIf="desplegado" class="fa-solid fa-eye-slash d-block"></i>
+          </div>
+
+          <i (click)="darLikePost()" class="fa-solid fa-thumbs-up fa-xl"></i>
+          <p class="my-1"><span *ngIf="data.likes.length >0"></span>{{data.likes.length}}</p>
+        </div>
+      </div>
+
+      <div class="col-10 col-sm-10  ">
+        <div class="forum-body-header row justify-content-between text-center">
+          <div class="forum-user align-items-center col-12 d-flex pt-1 pb-1 ">
+            <img *ngIf="image==null"
+                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                 alt="" class="pb-1 d-inline-block redondear">
+            <img *ngIf="image!=null" src="{{image}}" alt="" class="d-inline-block redondear">
+            <div class=" pb-1 ms-2 mt-1">{{data.userName}}</div>
+          </div>
+
+          <div class="col-12 row justify-content-between">
+            <div class="col-12 col-lg-4">
+              <h6 *ngIf="data.tagName!=null" class="tag rounded-3 p-1">{{data.tagName}}</h6>
+              <h6 *ngIf="data.tagName==null" class="tag rounded-3 p-1">Sin tag</h6>
+            </div>
+
+            <div class=" col-auto  col-lg-auto pt-1 pb-1 text-end texto-base">Creado
+              el: {{data.date| date:'dd/MM/yyyy h:mm:ss a'}}
+
+            </div>
+          </div>
+        </div>
+
+        <hr>
+        <div class="forum-body-title row align-items-center">
+
+          <div class="col-sm-auto col-12 forum-title">
+
+            {{data.name}}
+          </div>
+          <div class="col-sm-auto col-12">
+            <ul class="d-flex forum-tags texto-base">
+            </ul>
+          </div>
+        </div>
+        <hr>
+        <div *ngIf="desplegado">
+
+          <div [innerHTML]="data.content"></div>
+
+          <div class="forum-footer row align-items-center">
+            <div class="col-auto text-white py-2">
+              <i class="fa-solid fa-comment fa-xl me-2"></i>
+              <b class="ms-2">{{data.comments.length}}</b>
+                <b *ngIf="data.comments.length>0" class="ms-2">Comentario:</b>
+              <b *ngIf="data.comments.length==0" class="ms-2">Comentarios:</b>
+            </div>
+          </div>
+          <div *ngFor="let comment of data.comments">
+            <hr>
+            <div class="pt-2 justify-content-between  border-dark">
+              <div class="row justify-content-between ">
+                <div class="col-auto col-lg-4 d-flex align-items-center pb-1">
+                  <app-comment-img [userId]="comment.id_user"></app-comment-img>
+                  <p class="ms-3 mt-3 mt-lg-0 mt-xl-0 mt-md-0 mt-sm-0 mt-xxl-0">{{comment.user_name}}</p>
+                </div>
+
+
+                <div class="col-auto col-md-12 col-lg-8 row justify-content-around">
+                  <div class="col-sm-8 col-md-7">
+                    <span> Creado el: {{comment.date| date:'dd/MM/yyyy h:mm a'}}</span>
+                  </div>
+                  <div class=" text-start  col-sm-auto col-md-auto  ">
+                    <i (click)="darLikeComment(comment.id)" class="fa-solid fa-thumbs-up fa-xl"></i>
+                    <span class="ms-2">{{comment.likes.length}}</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="mt-4 p-3">{{comment.content}}</p>
+            </div>
+            <hr>
+          </div>
+
+          <div class="mt-5 mb-3">
+            <form (ngSubmit)="createComment(data.id)" class="register-form" id="register-form">
+              <div class="form-group">
+
+                <textarea [(ngModel)]="inputComment" type="text" name="comment" id="comment" placeholder="Escriba algo"
+                          class="form-control" required> </textarea>
+              </div>
+              <div class="mt-2 d-flex justify-content-end">
+                <button name="signup" id="signup" class="btn btn-success m-1" value="Registrar">Comentar</button>
+              </div>
+            </form>
+          </div>
+          <div *ngIf="error" class="alert alert-danger" role="alert">
+            <strong>{{error}}</strong>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

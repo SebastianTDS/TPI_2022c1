@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "seccion": "Programación Básica I",
+        "puntaje": 10,
+        "titulo": "Como instalar JDK16",
+        "tags": [
+            {"nombre":"#Java", "color": "#9acd32"},
+            {"nombre":"#Web-Dev", "color":"#7fffd4"}
+        ],
+        "contenido": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt dui ut mi pulvinar condimentum. Vestibulum in ligula et diam rhoncus finibus. Duis aliquam est rem, sit amet tincidunt quam dapibus dignissim. Proin dictum et dui at tempor. Mauris molestie nulla libero, id consectetur velit semper a. Cras elementum tortorquis iaculis tincidunt.sit amet tincidunt quam dapibus dignissim. Proin dictum et dui at tempor.Mauris molestie nulla libero, id consectetur velit semper a. Cras elementum tortor quis iaculis tincidunt.",
+        "numeroComentarios": 50,
+        "usuario": "Marcelo Zelaya",
+        "tiempo": "Hace 5 días"
+    },
+    {
+        "id": 2,
+        "seccion": "General",
+        "puntaje": 100,
+        "titulo": "Como entrar a MIEL",
+        "tags": [
+            {"nombre":"#Tecnología", "color": "#9acd32"},
+            {"nombre":"#Facultad", "color":"#7fffd4"}
+        ],
+        "contenido": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt dui ut mi pulvinar condimentum. Vestibulum in ligula et diam rhoncus finibus. Duis aliquam est rem, sit amet tincidunt quam dapibus dignissim. Proin dictum et dui at tempor. Mauris molestie nulla libero, id consectetur velit semper a. Cras elementum tortorquis iaculis tincidunt.sit amet tincidunt quam dapibus dignissim. Proin dictum et dui at tempor.Mauris molestie nulla libero, id consectetur velit semper a. Cras elementum tortor quis iaculis tincidunt.",
+        "numeroComentarios": 5
+        ,
+        "usuario": "Ivan Mollari",
+        "tiempo": "Hace 2 días"
+    },
+    {
+        "id": 3,
+        "seccion": "Programación Básica I",
+        "puntaje": -5,
+        "titulo": "Como instalar JDK12",
+        "tags": [],
+        "contenido": "..",
+        "numeroComentarios": 1000,
+        "usuario": "Gonzalo Fernandez",
+        "tiempo": "Hace 3 horas"
+    }
+]

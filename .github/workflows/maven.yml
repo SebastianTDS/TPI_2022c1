@@ -1,0 +1,30 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: IUmach CI w/Maven
+
+on:
+  push:
+    branches: [ main, testing ]
+  pull_request:
+    branches: [ main, testing ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+    - name: Compile and Test - Student service (w/Maven)
+      run: cd backend/IUmach/StudentService && mvn clean test
+    - name: Compile and Test - Algorithm service (w/Maven)
+      run: cd backend/IUmach/AlgorithmService && mvn clean test
+    - name: Compile and Test - Forum service (w/Maven)
+      run: cd backend/IUmach/ForumService && mvn clean test

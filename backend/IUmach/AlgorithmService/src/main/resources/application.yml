@@ -1,0 +1,18 @@
+server:
+  port: 8090
+  
+spring:
+  application:
+    name: AlgorithmService
+  neo4j:
+    uri: neo4j+s://442d07e6.databases.neo4j.io
+    authentication:
+      username: neo4j
+      password: 
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          neo4j: DEBUG

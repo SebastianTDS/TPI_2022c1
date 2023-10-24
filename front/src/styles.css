@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "SF Pro";
+  src: url('assets/fonts/SF-Pro-Display-Regular.otf');
+}
+
+@font-face{
+  font-family:"SF Pro Rounded";
+  src:url('assets/fonts/SF-Pro-Rounded-Regular.otf');
+}
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  font-family:"SF Pro";
+  list-style: none;
+  text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family:"SF Pro Rounded";
+  font-size: 48px;
+  line-height: 1.08349;
+  font-weight: 600 !important;
+  letter-spacing: -.003em;
+  color: var(--color1);
+}
+
+html, body, app-root {
+  height: 100%;
+}
+
+main{
+  min-height: calc(100vh - 170px - 58px);
+}
+
+
+:root{
+    --color1:#150d4b;
+    --color2:#2A1F70;
+    --color3: #6C63FF;
+    --color4: #ADB0FF;
+    --color5: #E7E8FF;
+    --color6: #FFFFFF;
+    --color7: #d55361;
+    --color8: #2a1f7086;
+}
+
+body{
+  background-image: url("assets/img/fondo3.jpg");
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.rounded-container{
+  border-radius: 25px!important;
+}

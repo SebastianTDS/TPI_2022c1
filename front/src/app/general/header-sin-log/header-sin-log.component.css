@@ -1,0 +1,43 @@
+
+.logo{
+  margin-left: 3%;
+}
+
+.containerButtons{
+  display:flex;
+  justify-content: space-between;
+}
+.containerButtons2{
+  background-color: #4B53BC !important;
+  border-radius: 10px;
+}
+
+.registrar{
+  text-decoration: none;
+}
+
+.login{
+  text-decoration: none;
+}
+
+.btn.btn-block{
+  color:white !important;
+}
+
+.btn{
+  border-radius: 10px !important;
+}
+
+.btn:hover{
+  background-color: var(--color1);
+  border-radius: 10px !important;
+}
+
+@media screen and (max-width: 575.98px) {
+
+  .container-fluid{
+    padding: 0;
+  }
+}
+
+

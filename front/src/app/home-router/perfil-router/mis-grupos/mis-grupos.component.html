@@ -1,0 +1,23 @@
+<app-curva></app-curva>
+<app-loading *ngIf="loading"></app-loading>
+<div class="container-fluid my-5">
+    <div class="container-fluid  border border-2 rounded-container card-menu row d-flex justify-content-center p-4 mx-0">
+        <h1 class="text-center mb-5 mt-3">Mis Grupos</h1>
+        <pagination-controls (pageChange)="pages = $event"
+                             previousLabel=""
+                             nextLabel=""
+                             class="d-flex justify-content-center mi-paginacion">
+        </pagination-controls>
+        <div class="row container-fluid">
+            <app-tarjeta-mi-grupo [dataGroupo]="grupo"
+                                  *ngFor="let grupo of misGrupos | paginate: { itemsPerPage: 8, currentPage: pages }"
+                                  class="col-xs-12  col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 d-flex justify-content-center"></app-tarjeta-mi-grupo>
+        </div>
+        <pagination-controls (pageChange)="pages = $event"
+                             previousLabel=""
+                             nextLabel=""
+                             class="d-flex justify-content-center mi-paginacion">
+        </pagination-controls>
+        <app-publicidad></app-publicidad>
+    </div>
+</div>

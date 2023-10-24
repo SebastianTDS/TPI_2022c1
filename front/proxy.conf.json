@@ -1,0 +1,57 @@
+{
+    "/algorithm/*": {
+        "target": "https://algorithm-service.herokuapp.com/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/calendar/*": {
+        "target": "https://calendar-services.herokuapp.com/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/file/*": {
+        "target": "https://files-services.herokuapp.com/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/student/*": {
+        "target": "https://students-services.herokuapp.com/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/valoration/*": {
+        "target": "https://students-services.herokuapp.com/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/group/*": {
+        "target": "https://students-services.herokuapp.com/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/forum/*": {
+        "target": "https://fuorum-service.herokuapp.com/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/notification/*": {
+        "target": "https://notificatification-service.herokuapp.com/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/request-join/*": {
+        "target": "https://students-services.herokuapp.com/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+
+}

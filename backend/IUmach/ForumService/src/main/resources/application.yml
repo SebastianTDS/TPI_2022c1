@@ -1,0 +1,19 @@
+server:
+  port: 8095
+  
+spring:
+  application:
+    name: ForumService
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://forum.clxprdqhqk07.us-east-1.rds.amazonaws.com:3306/forum
+    username: ${SERVICE_USER}
+    password: ${SERVICE_PASSWORD}
+

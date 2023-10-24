@@ -1,0 +1,22 @@
+<app-curva></app-curva>
+<app-loading *ngIf="loading"></app-loading>
+<div class="container my-3">
+    <div class="main-body">
+
+        <div class="row gutters-sm border border-2 redondear p-5">
+            <h1 class="d-flex justify-content-center">Notificaciones</h1>
+            <hr>
+            <div class="col-md-12 mb-3">
+                <div class="card-body">
+                    <h2 *ngIf="notificaciones.length==0" class="d-flex justify-content-center">No tiene notificaciones
+                        pendientes</h2>
+                    <app-tarjeta-notificacion [data]="val" *ngFor="let val of notificaciones"
+                                              class="gutters-sm"></app-tarjeta-notificacion>
+
+                </div>
+            </div>
+            <hr>
+            <app-publicidad></app-publicidad>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+[
+    {
+        "group_id": 10001,
+        "group_name":"Grupo Dinamita",
+        "group_members":4,
+        "group_capacity":10,
+        "group_picture": "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d29yayUyMHRhYmxlfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+    },
+    {
+        "group_id": 10002,
+        "group_name":"Grupo Meteorito",
+        "group_members":2,
+        "group_capacity":5,
+        "group_picture": "https://api.time.com/wp-content/uploads/2021/02/laptop-home-office.jpg"
+    },
+    {
+        "group_id": 3,
+        "group_name":"Los 4 Fantásticos 3",
+        "group_members":2,
+        "group_capacity":5,
+        "group_picture": "https://hbr.org/resources/images/article_assets/2014/10/Mar20_05_1187745190.jpg"
+    },
+    {
+        "group_id": 4,
+        "group_name":"Los 4 Fantásticos 4",
+        "group_members":2,
+        "group_capacity":5,
+        "group_picture": "https://hbr.org/resources/images/article_assets/2014/10/Mar20_05_1187745190.jpg"
+    },
+    {
+        "group_id": 6,
+        "group_name":"Los 4 Fantásticos 6",
+        "group_members":4,
+        "group_capacity":5,
+        "group_picture": "https://hbr.org/resources/images/article_assets/2014/10/Mar20_05_1187745190.jpg"
+    }
+]

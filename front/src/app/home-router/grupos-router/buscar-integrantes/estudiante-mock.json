@@ -1,0 +1,48 @@
+[
+    {
+        "id": 10,
+        "nombre":"Daniel Perez",
+        "valoracion":4,
+        "carrera_actual":"Tec. Desarrollo Web",
+        "recompensas": [],
+        "titulos": [],
+        "materias_actuales": [
+            "Programación Básica I - T.N.",
+            "Matemáticas T.N."
+        ],
+        "preferencia_horaria":[
+            "Lun. a Jue.: 19:00hs - 22:30hs",
+            "Sábados: 14:00hs - 19:00hs"
+        ],
+        "tags": [
+            {"nombre":"#Java", "color": "#9acd32"},
+            {"nombre":"#Web-Dev", "color":"#7fffd4"}
+        ],
+        "edad": 24,
+        "foto_perfil": "https://tropicalre.co.zw/wp-content/uploads/2020/07/Team-Member-Male-Placeholder.png"
+    },
+    {
+        "id": 11,
+        "nombre":"Jorge Díaz",
+        "valoracion":5,
+        "carrera_actual":"Tec. Desarrollo Movil",
+        "recompensas": [
+            "Usuario activo"
+        ],
+        "titulos": [],
+        "materias_actuales": [
+            "Programación Básica I - T.M.",
+            "Ingles I - T.M."
+        ],
+        "preferencia_horaria":[
+            "Viernes: 19:00hs - 22:30hs",
+            "Sábados: 14:00hs - 19:00hs"
+        ],
+        "tags": [
+            {"nombre":"#.NET", "color": "#9acd32"},
+            {"nombre":"#Web-Dev", "color":"#7fffd4"}
+        ],
+        "edad": 32,
+        "foto_perfil": "https://tropicalre.co.zw/wp-content/uploads/2020/07/Team-Member-Male-Placeholder.png"
+    }
+]

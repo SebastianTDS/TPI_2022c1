@@ -1,0 +1,206 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="container">
+    <div class="row ">
+        <div class="col-lg-7 mx-auto shadow-lg p-3 mb-5 bg-body rounded-container">
+            <div class=" text-center mt-2 ">
+                <h1>Crear grupo</h1>
+
+            </div>
+
+            <div class="card mt-2 mx-auto p-4 bg-light mb-4">
+                <div class="card-body bg-light">
+
+                    <div class="container">
+                        <form [formGroup]="validarForm" (ngSubmit)="crearGrupo()" id="group-form" role="form">
+
+
+                            <div class="controls">
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-2 div-input">
+                                        <div class="form-group">
+                                            <label for="formName">Nombre</label>
+                                            <input id="formName" type="text" name="formName"
+                                                   class="form-control {{errorStyle}}"
+                                                   placeholder="Ingrese nombre del grupo *" required="required"
+                                                   data-error="Firstname is required."
+                                                   formControlName="name" >
+
+                                        </div>
+                                        <div *ngIf="validarForm.get('name').touched" class="text-danger">
+                                            <div *ngIf="validarForm.get('name').hasError('required')">
+                                                Es necesario ingresar el nombre
+                                            </div>
+                                            <div *ngIf="validarForm.get('name').hasError('minlength') || validarForm.get('name').hasError('maxlength')">
+                                                El nombre tiene que tener entre 5 y 40 caracteres
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2 div-input">
+                                        <div class="form-group">
+                                            <label for="formDescripcion">Descripción</label>
+                                            <input id="formDescripcion" type="text"
+                                                   name="formDescripcion" class="form-control {{errorStyle}}"
+                                                   placeholder="Ingrese descripción del grupo *" required="required"
+                                                   data-error="Lastname is required."
+                                                   formControlName="description">
+                                        </div>
+                                        <div *ngIf="validarForm.get('description').touched" class="text-danger">
+                                            <div *ngIf="validarForm.get('description').hasError('required')">
+                                                Es necesario ingresar una descripción
+                                            </div>
+                                            <div *ngIf="validarForm.get('description').hasError('minlength') || validarForm.get('description').hasError('maxlength')">
+                                                La descripción tiene que tener entre 10 y 80 caracteres
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-2 div-input">
+                                        <div class="form-group">
+                                            <label for="formMaxEstudiantes">Cantidad máxima alumnos</label>
+                                            <input id="formMaxEstudiantes" type="email"
+                                                   name="formMaxEstudiantes" class="form-control {{errorStyle}}"
+                                                   placeholder="Ingrese cantidad máxima *" required="required"
+                                                   data-error="Valid email is required."
+                                                   formControlName="maxStudents">
+
+                                        </div>
+                                        <div *ngIf="validarForm.get('maxStudents').touched" class="text-danger">
+                                            <div *ngIf="validarForm.get('maxStudents').hasError('required')">
+                                                La cantidad máxima de estudiantes no puede ser nula
+                                            </div>
+                                            <div *ngIf="validarForm.get('maxStudents').hasError('min') || validarForm.get('maxStudents').hasError('max')">
+                                                La cantidad máxima de estudiantes tiene que ser mayor a 2 y menor a 9
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2 div-input">
+                                        <div class="form-group">
+                                            <label for="form_need">Tipo de Grupo:</label>
+                                            <select formControlName="typeGroup" (change)="hideShow($event.target)"
+                                                    class="form-select {{errorStyle}}"
+                                                    id="form_need" required>
+                                                <option selected disabled value="Turno">Tipo de Grupo</option>
+                                                <option>Materia</option>
+                                                <option>Estudio/Investigación</option>
+                                            </select>
+
+                                        </div>
+                                        <div *ngIf="validarForm.get('typeGroup').touched" class="text-danger">
+                                            <div *ngIf="validarForm.get('typeGroup').hasError('required')">
+                                                Tiene que elegir un tipo de grupo
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6 mb-2">
+                                        <label for="formClosed" class="me-2 {{errorStyle}}">Grupo Abierto: </label>
+
+                                        <div class="form-check form-check-inline">
+                                            <input formControlName="closed" class="form-check-input" type="radio"
+                                                   name="formClosed" id="formClosed1" value=false>
+                                            <label class="form-check-label" for="formClosed1">Si</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input formControlName="closed" class="form-check-input" type="radio"
+                                                   name="formClosed" id="formClosed" value=true>
+                                            <label class="form-check-label" for="formClosed">No</label>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="validarForm.get('closed').touched" class="text-danger">
+                                        <div *ngIf="validarForm.get('closed').hasError('required')">
+                                            Tiene que elegir la privacidad del grupo
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row" name="grupoMateria">
+                                    <div class="col-md-6 mb-2 div-input">
+                                        <div class="form-group {{errorStyle}}">
+                                            <label for="formCarrera">Carrera</label>
+                                            <select formControlName="career" class="form-select " id="formCarrera"
+                                                    required>
+                                                <option selected disabled value="carrera">Carrera...</option>
+                                                <option *ngFor="let carrera of user.carreras"
+                                                        [ngValue]="carrera.id">{{ carrera.name}}</option>
+
+                                            </select>
+                                        </div>
+                                        <div *ngIf="validarForm.get('career').touched" class="text-danger">
+                                            <div *ngIf="validarForm.get('career').hasError('required')">
+                                                Tiene que elegir una carrera
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-2 div-input">
+                                        <div class="form-group {{errorStyle}}">
+                                            <label for="formMateria">Materia</label>
+                                            <select formControlName="subject" (change)="verTurnos(campoMateria.value)" class="form-select" id="formMateria"
+                                                    required #campoMateria>
+                                                <option selected disabled value="materia">Materia...</option>
+                                                <option *ngFor="let materia of materias"
+                                                        value="{{materia.codigo}}">{{ materia.title}}</option>
+                                            </select>
+                                        </div>
+                                        <div *ngIf="validarForm.get('subject').touched" class="text-danger">
+                                            <div *ngIf="validarForm.get('subject').hasError('required')">
+                                                Tiene que elegir una materia
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="col-md-12 mb-2 div-input">
+                                            <div class="form-group {{errorStyle}}">
+                                                <label for="formTurno">Turno</label>
+                                                <select formControlName="shift" class="form-select" id="formTurno"
+                                                        required>
+                                                    <option selected disabled value="Turno">Turno...</option>
+                                                    <option *ngFor="let turno of turnos"
+                                                            [ngValue]="turno|uppercase">{{ turno}}</option>
+                                                </select>
+                                            </div>
+                                            <div *ngIf="validarForm.get('shift').touched" class="text-danger">
+                                                <div *ngIf="validarForm.get('shift').hasError('required')">
+                                                    Tiene que elegir un turno
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12 mt-3">
+                                        <button name="signup" id="signs"
+
+                                                class="btn btn-guardar btn-send  pt-2  btn-block" value="Registrar">
+                                            Agregar
+                                        </button>
+
+                                    </div>
+                                    <div class="col-md-12 mt-3">
+                                        <a [routerLink]="['/','home','buscar-grupos']"
+                                           class="btn btn-cancelar btn-send  pt-2  btn-block">Cancelar</a>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="error">
+                                    <app-error [error]="error" (click)="close()"></app-error>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+            <app-publicidad></app-publicidad>
+            <!-- /.8 -->
+
+        </div>
+        <!-- /.row-->
+
+    </div>
+</div>

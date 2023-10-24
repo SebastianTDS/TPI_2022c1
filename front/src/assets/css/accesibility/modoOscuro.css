@@ -1,0 +1,28 @@
+:root{
+  --color1:#150d4b;
+  --color2:#2A1F70;
+  --color3: #6C63FF;
+  --color4: #ADB0FF;
+  --color5: #E7E8FF;
+
+  --fondo: #2A2B2C;
+  --texto: #E7E8FF;
+
+}
+
+.card, header, nav div, nav a, nav button{
+  background-color: var(--fondo)!important;
+  color: var(--texto)!important;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+  color: var(--texto)!important;
+}
+
+.img-bg{
+  background-image: url("../../img/FondoOscuro.png");
+}
+
+.iso{
+  filter: invert(100%) sepia(1%) saturate(7446%) hue-rotate(283deg) brightness(122%) contrast(100%)!important;
+}

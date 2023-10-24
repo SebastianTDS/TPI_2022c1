@@ -1,0 +1,168 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class="row my-2">
+    <div class="card rounded-3 col-9 mt-2 p-3 mb-5  rounded">
+        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <div class="img-fixed rounded-3 my-4 row align-items-center gx-0">
+                <img *ngIf="!imageProfile" src="{{ dataEntrante.image }}"
+                     class="img-fluid col" alt=""/>
+                <img *ngIf="imageProfile" src="{{ imageProfile }}"
+                     class="img-fluid col" alt=""/>
+            </div>
+            <a href="#">
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);"></div>
+            </a>
+        </div>
+        <div class="card-body rounded-3 ">
+            <h5 class="card-title font-weight-bold"><a>{{ dataEntrante.name}}</a></h5>
+            <hr>
+            <h6>Coincidencia:</h6>
+            <div class="h-auto width-settings">
+                <circle-progress
+                [percent]="dataEntrante.coincidencia"
+                [radius]="50"
+                [outerStrokeWidth]="5"   [innerStrokeWidth]="8"
+                [outerStrokeColor]="getFirstColor(dataEntrante.coincidencia)" 
+                [innerStrokeColor]="getSecondColor(dataEntrante.coincidencia)"
+                [animation]="true"  [responsive]="true"   [animationDuration]="300"
+                [backgroundPadding]="0"
+                [showSubtitle]="false"
+                [titleFontSize]="'15'"   [unitsFontSize]="'15'"
+                [titleColor]="'#150d4b'" [unitsColor]="'#150d4b'"
+                [animationDuration]="0"
+                ></circle-progress>
+            </div>
+            <hr>
+            <div class="row gx-3 mb-3 w-90  tags-container" #containerTags>
+                <div *ngIf="checkOverflow(containerTags)" class="col-auto show-more">
+                    <i class="fa-solid fa-angle-down" (click)="showMore(containerTags)"></i>
+                </div>
+                <div *ngIf="!checkOverflow(containerTags)" class="col-auto show-more">
+                    <i *ngIf="dataEntrante.tags.length != 0" class="fa-solid fa-angle-up" (click)="showLess(containerTags)"></i>
+                </div>
+                <div  class="col-auto tags" *ngFor="let tag of dataEntrante.tags ">
+                    {{tag}}
+                </div>
+                <div *ngIf="dataEntrante.tags.length == 0" class="col-auto tags invisible">Sin tags</div>
+            </div>
+            <hr>
+            <p class="card-text fw-bold text-center">
+                {{dataEntrante.subject}}
+            </p>
+            <hr *ngIf="dataEntrante.subject != null">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-ingresar btn-sm col"
+                        *ngIf="dataEntrante.maxNumberOfStudents>dataEntrante.numberOfStudents && !dataEntrante.closed"
+                        (click)="unirseGrupo()">Ingresar
+                </button>
+                <button class="btn btn-solicitar btn-sm col"
+                        *ngIf="dataEntrante.maxNumberOfStudents>dataEntrante.numberOfStudents && dataEntrante.closed  && !msgSolicitud"
+                        (click)="unirseGrupoCerrado()">Solicitar unirse
+                </button>
+                <button class="btn btn-solicitar btn-sm col disabled"
+                        *ngIf="dataEntrante.maxNumberOfStudents>dataEntrante.numberOfStudents && dataEntrante.closed && msgSolicitud">
+                    Solicitud enviada
+                </button>
+                <button class="btn btn-lleno btn-sm disabled col"
+                        *ngIf="dataEntrante.maxNumberOfStudents==dataEntrante.numberOfStudents">
+                    Lleno
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="m-0 p-0 col-3">
+        <div class="col-2 rounded-end my-3 label h-auto w-75 text-center selecionado" (click)="openPopup()">
+            <i class="fa-solid fa-eye p-1"></i>
+        </div>
+        <div *ngIf="dataEntrante.closed" class="col-2 rounded-end my-3 label h-auto w-75 text-center">
+            <i class="fa-solid fa-lock text-light p-1"></i>
+        </div>
+        <div *ngIf="!dataEntrante.closed" class="col-2 rounded-end my-3 label h-auto w-75 text-center">
+            <i class="fa-solid fa-lock-open text-light p-1"></i>
+        </div>
+        <div class="col-2 rounded-end my-3 label h-auto w-75 text-center">
+            <i class="fa-solid fa-user-group text-light p-1"> {{dataEntrante.numberOfStudents}}
+                /{{dataEntrante.maxNumberOfStudents}}</i>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="msgSolicitud">
+    <app-success [sucess]="'Solicitud enviada'" (click)="close()"></app-success>
+</div>
+
+<div *ngIf="error">
+    <app-error [error]="'Ya envió solicitud a este grupo. Espere a que el administrador la evalúe'" (click)="close()"></app-error>
+</div>
+
+<!-- Modal -->
+<div
+        class="modal"
+        tabindex="-1"
+        role="dialog"
+        [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-container">
+            <div class="modal-header">
+                <h4 class="modal-title">{{dataEntrante.name}}</h4>
+                <button type="button" class="btn btn-danger btn-circle" (click)="closePopup()">X</button>
+            </div>
+            <div class="modal-body d-flex justify-content-center row">
+                <img src="{{ dataEntrante.image }}"
+                     class="img-fluid my-3 rounded-3" alt=""/>
+                <div *ngIf="dataEntrante.subject" class="col-12 rounded my-3 label h-auto w-75 text-light p-1">
+                    <i class="fa-solid fa-building-columns p-1"></i><b> Carrera: </b> {{dataEntrante.career}}
+                </div>
+                <div *ngIf="dataEntrante.subject" class="col-12 rounded my-3 label h-auto w-75 text-light p-1">
+                    <i class="fa-solid fa-book-open p-1"></i><b> Materia: </b> {{dataEntrante.subject}}
+                </div>
+                <div *ngIf="!dataEntrante.subject" class="col-12 rounded my-3 label h-auto w-75 text-light p-1">
+                    <i class="fa-solid fa-book-open p-1"></i><b> Tipo de grupo: </b> Grupo de Estudio/Investigación
+                </div>
+                <div *ngIf="dataEntrante.subject" class="col-12 rounded my-3 label h-auto w-75 text-light p-1">
+                    <i class="fa-solid fa-hourglass-empty p-1"></i><b> Turno: </b> {{dataEntrante.shift}}
+                </div>
+                <div class="col-12 rounded my-3 label h-auto w-75 text-light p-1">
+                    <i class="fa-solid fa-message p-1"></i><b> Descripción: </b> {{dataEntrante.description}}
+                </div>
+                <div class="col-12 rounded my-3 label h-auto w-75 text-light p-1">
+                    <i class="fa-solid fa-user-group p-1"></i><b> Miembros: </b> {{dataEntrante.numberOfStudents}}
+                    /{{dataEntrante.maxNumberOfStudents}}
+                </div>
+                <div class="col-12 rounded my-3 label h-auto w-75 text-light p-1">
+                    <i class="fa-solid fa-building-columns p-1"></i><b> Intereses: </b>
+                    <div class="ms-1" *ngFor="let tag of dataEntrante.tags">
+                      - {{tag}}
+                    </div>
+                </div>
+                <div *ngIf="dataEntrante.closed" class="col-12 rounded my-3 label h-auto w-75 text-light p-1">
+                    <i class="fa-solid fa-lock p-1"></i><b> Privacidad: </b> Grupo cerrado
+                </div>
+                <div *ngIf="!dataEntrante.closed" class="col-2 rounded my-3 label h-auto w-50 text-light p-1">
+                    <i class="fa-solid fa-lock-open p-1"></i><b> Privacidad: </b> Grupo abierto
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-ingresar col"
+                            *ngIf="dataEntrante.maxNumberOfStudents>dataEntrante.numberOfStudents && !dataEntrante.closed"
+                            (click)="unirseGrupo()">Ingresar
+                    </button>
+                    <button class="btn btn-solicitar btn-sm col"
+                            *ngIf="dataEntrante.maxNumberOfStudents>dataEntrante.numberOfStudents && dataEntrante.closed  && !msgSolicitud"
+                            (click)="unirseGrupoCerrado()">Solicitar unirse
+                    </button>
+                    <button class="btn btn-solicitar btn-sm col disabled"
+                            *ngIf="dataEntrante.maxNumberOfStudents>dataEntrante.numberOfStudents && dataEntrante.closed && msgSolicitud">
+                        Solicitud enviada
+                    </button>
+                    <button class="btn btn-secondary  disabled col"
+                            *ngIf="dataEntrante.maxNumberOfStudents==dataEntrante.numberOfStudents">
+                        Lleno
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

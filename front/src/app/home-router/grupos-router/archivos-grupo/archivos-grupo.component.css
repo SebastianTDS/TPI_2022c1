@@ -1,0 +1,72 @@
+.curved-div{
+  background-color: var(--color3);
+  width: 100%;
+  height: 60px;
+}
+
+.curve{
+  height: 100px;
+  fill: var(--color3);
+}
+
+.card-menu {
+  background-color: #FBFBFD;
+  margin-bottom: 2em;
+}
+
+.curve svg{
+  filter: drop-shadow(3px 5px 2px #2a1f7086);
+}
+
+.full-size{
+  width: 100%;
+  height: 100%;
+}
+
+.table-archivos{
+  color: var(--color1);
+  
+}
+
+.bg-table{
+  background-color: var(--color1);
+  color: var(--color6);
+
+}
+
+.archivo{
+  cursor: pointer;
+}
+
+.archivo:hover{
+  background-color: var(--color4);
+}
+
+.eliminar{
+  color:brown;
+  font-size: x-large;
+}
+
+.forum-button-success{
+  color: var(--color2);
+  border-color: var(--color2);
+  background-color: transparent;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid var(--color2);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.forum-button-success:hover{
+  color: #fff;
+  background-color: var(--color2);
+  border-color: var(--color2);
+}
